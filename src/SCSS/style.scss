@@ -5,11 +5,54 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  user-select: none;
+}
+body,
+html {
+  height: 100%;
+  margin: 0;
 }
 
 body {
-  background-color: $light-color;
   font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.6;
-  color: set-text-color($light-color);
+  line-height: 1.25;
+}
+
+#content {
+  display: grid;
+  height: 100%;
+  grid-template-rows: 60px auto;
+  grid-template-columns: 180px auto 400px;
+  grid-template-areas:
+    "header header header"
+    "projects main todo-misc";
+}
+
+header {
+  grid-area: header;
+  /*height: 60px;*/
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  justify-content: center;
+  background: $header-bg-color;
+  color: $header-font-color;
+  font-size: 1.5em;
+  font-weight: 900;
+  padding: 0;
+  width: 100%;
+}
+
+main {
+  grid-area: main;
+  background: $main-bg-color;
+}
+#project-container {
+  grid-area: projects;
+  background: $project-container-bg-color;
+}
+
+#todo-misc-container {
+  grid-area: todo-misc;
+  background: $todo-misc-container-bg-color;
 }

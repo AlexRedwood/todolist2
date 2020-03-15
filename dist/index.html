@@ -2,12 +2,50 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Todolist project</title>
   </head>
   <body>
-    Hello world
-    <button type="button" class="btn-todo">lalala</button>
-    <button type="button" class="btn-bodo">lalala</button>
+    <div id="content">
+      <header>Todo-list</header>
+      <aside id="project-container">
+        <ul id="project-list">
+          <li>
+            <span class="project-icon">X</span>
+            <span class="project-name">All tasks</span>
+            <span class="count-todos">1</span>
+          </li>
+          <li>
+            <span class="project-icon">X</span>
+            <span class="project-name">Project 1</span>
+            <span class="count-todos"></span>
+          </li>
+          <li>
+            <span class="project-icon">X</span>
+            <span class="project-name">Project 2</span>
+            <span class="count-todos">4</span>
+          </li>
+          <li>
+            <span class="project-icon">X</span>
+            <span class="project-name">Project 3</span>
+            <span class="count-todos"></span>
+          </li>
+          <form>
+            <label for="new-project"></label>
+            <input
+              id="new-project"
+              type="text"
+              placeholder="New project"
+              autocomplete="off"
+            />
+            <input id="submit-project" type="submit" value="+" />
+          </form>
+        </ul>
+      </aside>
+      <main>
+        <div></div>
+      </main>
+      <aside id="todo-misc-container">d</aside>
+    </div>
     <script src="bundle.js"></script>
   </body>
 </html>
