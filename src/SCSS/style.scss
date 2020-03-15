@@ -51,6 +51,63 @@ main {
 #project-container {
   grid-area: projects;
   background: $project-container-bg-color;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  #project-list {
+    width: 150px;
+
+    .project {
+      margin: 10px;
+      padding: 10px;
+      border-radius: 5px;
+
+      &.active {
+        background: rgb(206, 255, 187);
+        font-weight: 900;
+      }
+      &:not(.active):hover {
+        background: rgb(230, 255, 220);
+        cursor: pointer;
+      }
+      .project-icon {
+        margin-right: 10px;
+      }
+
+      .count-todos {
+        margin-left: 5px;
+        font-size: 0.8em;
+        font-weight: 900;
+      }
+    }
+  }
+  #new-project-form {
+    position: relative;
+
+    #new-project {
+      border: 0;
+      border-bottom: 2px solid grey;
+      width: 150px;
+      padding: 10px;
+      margin-bottom: 10px;
+      outline: 0;
+      font-size: 1.2em;
+      background: transparent;
+      transition: border-color 0.2s;
+      &::placeholder {
+        color: transparent;
+      }
+    }
+    .project-form-label {
+      position: absolute;
+      display: block;
+      transition: 0.2s;
+      font-size: 0.8em;
+      color: blue;
+    }
+  }
 }
 
 #todo-misc-container {

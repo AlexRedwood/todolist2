@@ -5,32 +5,34 @@
     <title>Todolist project</title>
   </head>
   <body>
-    <ul id="content">
+    <div id="content">
       <header>Todo-list</header>
       <aside id="project-container">
         <ul id="project-list">
-          <li>
+          <li class="project active">
             <span class="project-icon">X</span>
             <span class="project-name">All tasks</span>
             <span class="count-todos">1</span>
           </li>
-          <li>
+          <li class="project">
             <span class="project-icon">X</span>
             <span class="project-name">Project 1</span>
             <span class="count-todos"></span>
           </li>
-          <li>
+          <li class="project">
             <span class="project-icon">X</span>
             <span class="project-name">Project 2</span>
             <span class="count-todos">4</span>
           </li>
-          <li>
+          <li class="project">
             <span class="project-icon">X</span>
             <span class="project-name">Project 3</span>
             <span class="count-todos"></span>
           </li>
-          <form>
-            <label for="new-project"></label>
+          <form id="new-project-form">
+            <label for="new-project" class="project-form-label"
+              >New project</label
+            >
             <input
               id="new-project"
               type="text"
@@ -55,6 +57,27 @@
             <button type="button" class="delete-todo-btn"></button>
           </li>
 
+          <li class="todo">
+            <span class="todo-title">Learn stuff</span>
+            <div class="details">
+              <span class="from-project">Project 3</span>
+              <span class="due-date">Due 15.3.2020</span>
+              <span class="priority-level">High priority</span>
+              <span class="note-presence">Note</span>
+            </div>
+            <button type="button" class="delete-todo-btn"></button>
+          </li>
+
+          <li class="todo">
+            <span class="todo-title">Learn stuff</span>
+            <div class="details">
+              <span class="from-project">Project 2</span>
+              <span class="due-date">Due 15.3.2020</span>
+              <span class="priority-level">High priority</span>
+              <span class="note-presence">Note</span>
+            </div>
+            <button type="button" class="delete-todo-btn"></button>
+          </li>
         </ul>
         <form>
           <label for="new-todo"></label>
@@ -64,9 +87,31 @@
             placeholder="New task"
             autocomplete="off"
           />
+          <input id="submit-todo" type="submit" value="Add new task" />
         </form>
       </main>
-      <aside id="todo-misc-container">d</aside>
+      <aside id="todo-misc-container">
+        <div id="todo-name-changer-container">
+          <textarea class="todo-name-changer" maxlength="200"></textarea>
+          <span id="close-todo-misc-container">X</span>
+        </div>
+        <div id="date-changer">
+          <label for="date">
+            <input id="date" type="date" readonly="readonly" />
+            <span id="date-remover">X</span>
+          </label>
+        </div>
+
+        <div id="priority-container">
+          <span id="low-priority">L</span>
+          <span id="meidum-priority">M</span>
+          <span id="high-priority">H</span>
+        </div>
+
+        <div id="note-container">
+          <textarea class="note-changer" maxlength="200"></textarea>
+        </div>
+      </aside>
     </div>
     <script src="bundle.js"></script>
   </body>
