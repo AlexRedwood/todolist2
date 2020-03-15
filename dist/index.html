@@ -10,7 +10,9 @@
       <aside id="project-container">
         <ul id="project-list">
           <li class="project active">
-            <span class="project-icon">X</span>
+            <span class="project-icon">
+              <ion-icon src=""></ion-icon>
+            </span>
             <span class="project-name">All tasks</span>
             <span class="count-todos">1</span>
           </li>
@@ -30,15 +32,13 @@
             <span class="count-todos"></span>
           </li>
           <form id="new-project-form">
-            <label for="new-project" class="project-form-label"
-              >New project</label
-            >
             <input
               id="new-project"
               type="text"
               placeholder="New project"
               autocomplete="off"
             />
+            <label for="new-project" class="new-project-label"></label>
             <input id="submit-project" type="submit" value="+" />
           </form>
         </ul>

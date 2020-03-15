@@ -32,6 +32,12 @@ module.exports = {
           // Compiles Sass to CSS
           "sass-loader"
         ]
+      },
+      {
+        test: /\.svg$/,
+        use: {
+          loader: "svg-inline-loader"
+        }
       }
     ]
   }
