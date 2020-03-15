@@ -5,7 +5,7 @@
     <title>Todolist project</title>
   </head>
   <body>
-    <div id="content">
+    <ul id="content">
       <header>Todo-list</header>
       <aside id="project-container">
         <ul id="project-list">
@@ -42,7 +42,29 @@
         </ul>
       </aside>
       <main>
-        <div></div>
+        <div id="project-title">Project 1</div>
+        <ul id="todos">
+          <li class="todo">
+            <span class="todo-title">Learn stuff</span>
+            <div class="details">
+              <span class="from-project">Project 2</span>
+              <span class="due-date">Due 15.3.2020</span>
+              <span class="priority-level">High priority</span>
+              <span class="note-presence">Note</span>
+            </div>
+            <button type="button" class="delete-todo-btn"></button>
+          </li>
+
+        </ul>
+        <form>
+          <label for="new-todo"></label>
+          <input
+            id="new-todo"
+            type="text"
+            placeholder="New task"
+            autocomplete="off"
+          />
+        </form>
       </main>
       <aside id="todo-misc-container">d</aside>
     </div>
