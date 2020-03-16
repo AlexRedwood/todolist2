@@ -1,14 +1,20 @@
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
 module.exports = {
   entry: "./src/JS/index.js",
   output: {
-    filename: "bundle.js",
+    filename: "bundle.[contentHash].js",
     path: path.resolve(__dirname, "dist")
   },
   watch: true,
   mode: "development",
   devtool: "inline-source-map",
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./src/HTML/template.html"
+    })
+  ],
 
   module: {
     rules: [
@@ -34,10 +40,12 @@ module.exports = {
         ]
       },
       {
-        test: /\.svg$/,
-        use: {
-          loader: "svg-inline-loader"
-        }
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        use: [
+          {
+            loader: "file-loader"
+          }
+        ]
       }
     ]
   }
