@@ -17,6 +17,7 @@ html {
 body {
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.25;
+  background: $body-bg-color;
 }
 
 #content {
@@ -42,12 +43,19 @@ header {
   font-weight: 900;
   padding: 0;
   width: 100%;
+
+  #header-title {
+    margin-right: auto;
+  }
+
+  #menu-icon {
+    margin-right: auto;
+    margin-left: 10px;
+    font-size: 48px;
+    cursor: pointer;
+  }
 }
 
-main {
-  grid-area: main;
-  background: $main-bg-color;
-}
 #project-container {
   grid-area: projects;
   background: $project-container-bg-color;
@@ -55,13 +63,16 @@ main {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  -webkit-box-shadow: 8px 0px 5px -4px $shadows-color;
+  -moz-box-shadow: 8px 0px 5px -4px $shadows-color;
+  box-shadow: 8px 0px 5px -4px $shadows-color;
 
   #project-list {
     width: 280px;
     max-width: 280px;
 
     .project {
-      margin: 10px;
+      margin: 10px 0px;
       padding: 10px;
       border-radius: 5px;
       display: flex;
@@ -75,24 +86,49 @@ main {
         color: $project-active-font-color;
         font-weight: 900;
       }
+
+      &:hover .delete-project-btn {
+        background: $project-hover-bg-color;
+        visibility: visible;
+        animation: appearFromRight 0.4s ease-out forwards;
+      }
+
       &:not(.active):hover {
-        background: $project-container-bg-color;
+        background: $project-hover-bg-color;
         cursor: pointer;
       }
+
       .project-icon {
         margin-right: 5px;
         font-size: 24px;
       }
 
+      .project-name {
+        width: 180px;
+        max-width: 180px;
+      }
+
       .count-todos {
-        margin-left: 5px;
+        margin-right: auto;
         font-size: 0.8em;
         font-weight: 900;
       }
 
-      .project-name {
-        width: 180px;
-        max-width: 180px;
+      .delete-project-btn {
+        visibility: hidden;
+        position: relative;
+        /*  left: 30px; */
+        font-size: 24px;
+        outline: none;
+        border: none;
+        background: $project-container-bg-color;
+        color: $project-form-inactive-color;
+        cursor: pointer;
+        transition: color 0.4s;
+
+        &:hover {
+          color: $project-delete-btn-color;
+        }
       }
     }
   }
@@ -103,12 +139,13 @@ main {
     position: relative;
     margin-left: 15px;
     margin-right: 0;
+    display: flex;
 
     #new-project {
       border: 0;
       border-bottom: 2px solid $project-form-inactive-color;
-      margin-left: 10px;
-      margin-right: -3px;
+      margin-left: 2px;
+      margin-right: auto;
       padding: 9px 0;
       outline: 0;
       font-size: 1em;
@@ -116,9 +153,11 @@ main {
       background: transparent;
 
       &:focus {
+        transition: 0.7s;
         color: $project-form-font-color;
         border-bottom: 2px solid $project-form-border-color;
         &::placeholder {
+          transition: 0.7s;
           color: $project-form-font-color;
         }
       }
@@ -129,13 +168,18 @@ main {
       display: inline-block;
       border: none;
       position: relative;
-      top: 10px;
+      top: 2px;
+      left: 10px;
       text-decoration: none;
       font-size: 24px;
-      color: $project-form-inactive-color;
+      color: $project-form-font-color;
       cursor: pointer;
       text-align: center;
       padding: 6px;
+
+      ion-icon {
+        --ionicon-stroke-width: 48px;
+      }
 
       &:focus {
         outline: none;
@@ -152,6 +196,7 @@ main {
         box-sizing: border-box;
         border: 4px dashed $project-container-bg-color;
         border-radius: 50%;
+        transition: 0.7s;
       }
       &:hover {
         color: $project-form-font-color;
@@ -164,7 +209,106 @@ main {
   }
 }
 
+main {
+  grid-area: main;
+  background: $main-bg-color;
+  padding: 35px;
+  margin: 20px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-shadow: 0px 0px 5px 2px $shadows-color;
+  -moz-box-shadow: 0px 0px 5px 2px $shadows-color;
+  box-shadow: 0px 0px 5px 2px $shadows-color;
+
+  #project-title {
+    margin-bottom: 20px;
+    font-weight: 900;
+    font-size: 1.4em;
+  }
+
+  .todo {
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 40px auto 30px;
+    grid-template-areas:
+      "checkbox title btn"
+      "checkbox details btn";
+    justify-items: start;
+    align-items: center;
+    margin: 15px 0;
+    padding: 5px 15px;
+
+    border: 1px solid $todo-border-color;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+      -webkit-box-shadow: 0px 0px 5px 0px $todo-hover-shadow-color;
+      -moz-box-shadow: 0px 0px 5px 0px $todo-hover-shadow-color;
+      box-shadow: 0px 0px 5px 0px $todo-hover-shadow-color;
+    }
+
+    label {
+      grid-area: checkbox;
+
+      .todo-icon-container {
+        position: relative;
+        width: 20px;
+        height: 20px;
+
+        &::after {
+          visibility: visible;
+          content: "";
+          position: absolute;
+          z-index: 0;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          box-sizing: border-box;
+          border: 2px solid $project-form-inactive-color;
+          border-radius: 50%;
+          cursor: pointer;
+        }
+      }
+
+      &:hover ion-icon {
+        visibility: visible;
+      }
+
+      ion-icon {
+        visibility: hidden;
+
+        color: $project-form-inactive-color;
+        --ionicon-stroke-width: 48px;
+      }
+    }
+
+    .todo-checkbox {
+      height: 0;
+    }
+
+    .todo-title {
+      grid-area: title;
+    }
+
+    .details {
+      grid-area: details;
+    }
+
+    .delete-todo-btn {
+      grid-area: btn;
+    }
+  }
+}
+
 #todo-misc-container {
   grid-area: todo-misc;
   background: $todo-misc-container-bg-color;
+  -webkit-box-shadow: -8px 0px 5px -4px $shadows-color;
+  -moz-box-shadow: -8px 0px 5px -4px $shadows-color;
+  box-shadow: -8px 0px 5px -4px $shadows-color;
 }

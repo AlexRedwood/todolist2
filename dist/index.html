@@ -6,7 +6,12 @@
   </head>
   <body>
     <div id="content">
-      <header>Todo-list</header>
+      <header>
+        <div id="menu-icon">
+          <ion-icon name="reorder-four-outline"></ion-icon>
+        </div>
+        <div id="header-title">Todo-List</div>
+      </header>
 
       <!--  LEFT SIDE OF THE PAGE -->
       <aside id="project-container">
@@ -24,13 +29,19 @@
             </span>
             <span class="project-name">Project 1</span>
             <span class="count-todos">2</span>
+            <button type="button" class="delete-project-btn">
+              <ion-icon name="close-circle-outline"></ion-icon>
+            </button>
           </li>
           <li class="project">
             <span class="project-icon">
               <ion-icon name="reader-outline"></ion-icon>
             </span>
             <span class="project-name">Project 5 </span>
-            <span class="count-todos">4450</span>
+            <span class="count-todos">23</span>
+            <button type="button" class="delete-project-btn">
+              <ion-icon name="close-circle-outline"></ion-icon>
+            </button>
           </li>
           <li class="project">
             <span class="project-icon">
@@ -38,6 +49,9 @@
             </span>
             <span class="project-name">Learn English</span>
             <span class="count-todos">11</span>
+            <button type="button" class="delete-project-btn">
+              <ion-icon name="close-circle-outline" size="medium"></ion-icon>
+            </button>
           </li>
 
           <!--  USER INPUT -->
@@ -61,6 +75,12 @@
         <div id="project-title">Project 1</div>
         <ul id="todos">
           <li class="todo">
+            <label for="todocheckbox1">
+              <div class="todo-icon-container">
+                <ion-icon name="checkmark-outline"></ion-icon>
+              </div>
+            </label>
+            <input type="checkbox" class="todo-checkbox" id="todocheckbox1" />
             <span class="todo-title">Learn stuff</span>
             <div class="details">
               <span class="from-project">Project 2</span>
@@ -68,10 +88,16 @@
               <span class="priority-level">High priority</span>
               <span class="note-presence">Note</span>
             </div>
-            <button type="button" class="delete-todo-btn"></button>
+            <button type="button" class="delete-todo-btn">X</button>
           </li>
 
           <li class="todo">
+            <label for="todocheckbox2">
+              <div class="todo-icon-container">
+                <ion-icon name="checkmark-outline"></ion-icon>
+              </div>
+            </label>
+            <input type="checkbox" class="todo-checkbox" id="todocheckbox2" />
             <span class="todo-title">Learn stuff</span>
             <div class="details">
               <span class="from-project">Project 3</span>
@@ -79,10 +105,16 @@
               <span class="priority-level">High priority</span>
               <span class="note-presence">Note</span>
             </div>
-            <button type="button" class="delete-todo-btn"></button>
+            <button type="button" class="delete-todo-btn">X</button>
           </li>
 
           <li class="todo">
+            <label for="todocheckbox3">
+              <div class="todo-icon-container">
+                <ion-icon name="checkmark-outline"></ion-icon>
+              </div>
+            </label>
+            <input type="checkbox" class="todo-checkbox" id="todocheckbox3" />
             <span class="todo-title">Learn stuff</span>
             <div class="details">
               <span class="from-project">Project 2</span>
@@ -90,7 +122,7 @@
               <span class="priority-level">High priority</span>
               <span class="note-presence">Note</span>
             </div>
-            <button type="button" class="delete-todo-btn"></button>
+            <button type="button" class="delete-todo-btn">X</button>
           </li>
         </ul>
         <form>
@@ -130,5 +162,5 @@
       </aside>
     </div>
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
-  <script type="text/javascript" src="bundle.a4881a38f8099cab2362.js"></script></body>
+  <script type="text/javascript" src="bundle.2311027cf8db0435abcc.js"></script></body>
 </html>

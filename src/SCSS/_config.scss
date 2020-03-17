@@ -1,15 +1,24 @@
 $header-bg-color: rgb(82, 104, 81);
 $header-font-color: #f4f4f4;
 
+$body-bg-color: rgb(233, 233, 233);
+$shadows-color: rgb(224, 224, 224);
+
 $project-container-bg-color: #fff;
-$main-bg-color: rgb(218, 234, 255);
-$todo-misc-container-bg-color: rgb(241, 236, 184);
+$project-hover-bg-color: rgb(240, 240, 240);
+$main-bg-color: #fff;
+$todo-misc-container-bg-color: #fff;
 
 $project-active-font-color: #11998e;
 
 $project-form-font-color: #11998e;
 $project-form-border-color: #38ef7d;
 $project-form-inactive-color: grey;
+
+$project-delete-btn-color: rgb(207, 11, 11);
+
+$todo-border-color: lightgrey;
+$todo-hover-shadow-color: rgb(228, 228, 228);
 
 // set text color based on background
 @function set-text-color($color) {
