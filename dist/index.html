@@ -7,6 +7,8 @@
   <body>
     <div id="content">
       <header>Todo-list</header>
+
+      <!--  LEFT SIDE OF THE PAGE -->
       <aside id="project-container">
         <ul id="project-list">
           <li class="project active">
@@ -21,22 +23,24 @@
               <ion-icon name="reader-outline"></ion-icon>
             </span>
             <span class="project-name">Project 1</span>
-            <span class="count-todos"></span>
+            <span class="count-todos">2</span>
           </li>
           <li class="project">
             <span class="project-icon">
               <ion-icon name="reader-outline"></ion-icon>
             </span>
-            <span class="project-name">Project 2</span>
-            <span class="count-todos">4</span>
+            <span class="project-name">Project 5 </span>
+            <span class="count-todos">4450</span>
           </li>
           <li class="project">
             <span class="project-icon">
               <ion-icon name="reader-outline"></ion-icon>
             </span>
             <span class="project-name">Learn English</span>
-            <span class="count-todos"></span>
+            <span class="count-todos">11</span>
           </li>
+
+          <!--  USER INPUT -->
           <form id="new-project-form">
             <input
               id="new-project"
@@ -45,10 +49,14 @@
               autocomplete="off"
             />
             <label for="new-project" class="new-project-label"></label>
-            <input id="submit-project" type="submit" value="+" />
+            <button id="submit-project" type="submit">
+              <ion-icon name="add-outline"></ion-icon>
+            </button>
           </form>
         </ul>
       </aside>
+
+      <!--  MIDDLE -->
       <main>
         <div id="project-title">Project 1</div>
         <ul id="todos">
@@ -96,6 +104,8 @@
           <input id="submit-todo" type="submit" value="Add new task" />
         </form>
       </main>
+
+      <!--  RIGHT SIDE OF THE PAGE -->
       <aside id="todo-misc-container">
         <div id="todo-name-changer-container">
           <textarea class="todo-name-changer" maxlength="200"></textarea>
@@ -120,5 +130,5 @@
       </aside>
     </div>
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
-  <script type="text/javascript" src="bundle.547c2ed8b88726a7057b.js"></script></body>
+  <script type="text/javascript" src="bundle.a4881a38f8099cab2362.js"></script></body>
 </html>

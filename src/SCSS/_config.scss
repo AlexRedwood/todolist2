@@ -1,14 +1,16 @@
-$header-bg-color: rgb(39, 136, 143);
+$header-bg-color: rgb(82, 104, 81);
 $header-font-color: #f4f4f4;
 
 $project-container-bg-color: #fff;
 $main-bg-color: rgb(218, 234, 255);
 $todo-misc-container-bg-color: rgb(241, 236, 184);
 
-$primary: #11998e;
-$secondary: #38ef7d;
-$darkgrey: #444;
-$gray: #9b9b9b;
+$project-active-font-color: #11998e;
+
+$project-form-font-color: #11998e;
+$project-form-border-color: #38ef7d;
+$project-form-inactive-color: grey;
+
 // set text color based on background
 @function set-text-color($color) {
   @if (lightness($color) > 70) {
