@@ -15,7 +15,7 @@ html {
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Sen", sans-serif;
   line-height: 1.25;
   background: $body-bg-color;
 }
@@ -24,7 +24,8 @@ body {
   display: grid;
   height: 100%;
   grid-template-rows: 60px auto;
-  grid-template-columns: 300px auto 400px;
+  grid-template-columns: 300px auto 350px;
+  /* grid-template-columns: 300px auto 0; */
   grid-template-areas:
     "header header header"
     "projects main todo-misc";
@@ -39,23 +40,37 @@ header {
   justify-content: center;
   background: $header-bg-color;
   color: $header-font-color;
-  font-size: 1.5em;
+  font-size: 1.9em;
   font-weight: 900;
   padding: 0;
   width: 100%;
+  font-family: "Permanent Marker", cursive;
+  letter-spacing: 5px;
+
+  #menu-icon {
+    margin-right: auto;
+    margin-left: 0;
+    font-size: 48px;
+    cursor: pointer;
+    padding: 10px;
+
+    &:hover {
+      background: $menu-icon-bg-color;
+    }
+  }
 
   #header-title {
     margin-right: auto;
   }
 
-  #menu-icon {
-    margin-right: auto;
-    margin-left: 10px;
+  #socials {
+    margin-right: 10px;
     font-size: 48px;
     cursor: pointer;
   }
 }
 
+/* LEFT SIDE OF THE PAGE: PROJECTS */
 #project-container {
   grid-area: projects;
   background: $project-container-bg-color;
@@ -90,7 +105,7 @@ header {
       &:hover .delete-project-btn {
         background: $project-hover-bg-color;
         visibility: visible;
-        animation: appearFromRight 0.4s ease-out forwards;
+        animation: appearFromRightProject 0.3s ease-out forwards;
       }
 
       &:not(.active):hover {
@@ -122,17 +137,21 @@ header {
         outline: none;
         border: none;
         background: $project-container-bg-color;
-        color: $project-form-inactive-color;
+        color: $project-delete-btn-color;
         cursor: pointer;
-        transition: color 0.4s;
+        transition: color 0.2s;
 
         &:hover {
-          color: $project-delete-btn-color;
+          color: $project-delete-btn-hover-color;
+        }
+        &:focus {
+          color: $project-delete-btn-focus-color;
         }
       }
     }
   }
 
+  /* LEFT-SIDE OF THE PAGE: User Input*/
   #new-project-form {
     width: 250px;
     max-width: 280px;
@@ -141,6 +160,7 @@ header {
     margin-right: 0;
     display: flex;
 
+    /* Input */
     #new-project {
       border: 0;
       border-bottom: 2px solid $project-form-inactive-color;
@@ -151,6 +171,7 @@ header {
       font-size: 1em;
       color: $project-form-inactive-color;
       background: transparent;
+      font-family: "Sen", sans-serif;
 
       &:focus {
         transition: 0.7s;
@@ -162,23 +183,23 @@ header {
         }
       }
     }
-
+    /* Submit button */
     #submit-project {
       background: $project-container-bg-color;
       display: inline-block;
       border: none;
       position: relative;
-      top: 2px;
+      top: 0px;
       left: 10px;
       text-decoration: none;
       font-size: 24px;
-      color: $project-form-font-color;
       cursor: pointer;
       text-align: center;
       padding: 6px;
 
       ion-icon {
         --ionicon-stroke-width: 48px;
+        color: $project-form-inactive-color;
       }
 
       &:focus {
@@ -194,25 +215,29 @@ header {
         width: 100%;
         height: 100%;
         box-sizing: border-box;
-        border: 4px dashed $project-container-bg-color;
-        border-radius: 50%;
-        transition: 0.7s;
+        border: 2px solid $project-container-bg-color;
+        border-radius: 5px;
+        transition: 0.5s;
       }
       &:hover {
         color: $project-form-font-color;
         &::after {
-          border: 4px dashed $project-form-border-color;
-          animation: rotation 7s linear infinite;
+          border: 2px solid $project-form-border-color;
+          border-radius: 5px;
+        }
+        ion-icon {
+          color: $project-form-font-color;
         }
       }
     }
   }
 }
 
+/* Middle: Project title, todo tasks*/
 main {
   grid-area: main;
   background: $main-bg-color;
-  padding: 35px;
+  padding: 20px;
   margin: 20px;
   border-radius: 5px;
   display: flex;
@@ -231,16 +256,13 @@ main {
     position: relative;
     width: 100%;
     display: grid;
-    grid-template-rows: auto auto;
-    grid-template-columns: 40px auto 30px;
-    grid-template-areas:
-      "checkbox title btn"
-      "checkbox details btn";
+    grid-template-rows: auto;
+    grid-template-columns: 40px auto 20px;
+    grid-template-areas: "checkbox todotext btn";
     justify-items: start;
     align-items: center;
-    margin: 15px 0;
+    margin-bottom: 15px;
     padding: 5px 15px;
-
     border: 1px solid $todo-border-color;
     border-radius: 5px;
     cursor: pointer;
@@ -251,13 +273,24 @@ main {
       box-shadow: 0px 0px 5px 0px $todo-hover-shadow-color;
     }
 
+    &:hover .delete-todo-btn {
+      background: $project-container-bg-color;
+      visibility: visible;
+      animation: appearFromRightProject 0.3s ease-out forwards;
+    }
+
+    /* Custom made checkbox with after element */
     label {
       grid-area: checkbox;
 
       .todo-icon-container {
         position: relative;
-        width: 20px;
-        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        transition: 0.7s;
 
         &::after {
           visibility: visible;
@@ -269,21 +302,29 @@ main {
           width: 100%;
           height: 100%;
           box-sizing: border-box;
-          border: 2px solid $project-form-inactive-color;
+          border: 2px solid $todo-checkbox-inactive-color;
           border-radius: 50%;
           cursor: pointer;
+          transition: 0.7s;
         }
-      }
 
-      &:hover ion-icon {
-        visibility: visible;
-      }
+        ion-icon {
+          visibility: hidden;
+          font-size: 24px;
+          --ionicon-stroke-width: 48px;
+        }
 
-      ion-icon {
-        visibility: hidden;
+        &:hover {
+          &::after {
+            border: 2px solid $todo-checkbox-hover-color;
+          }
 
-        color: $project-form-inactive-color;
-        --ionicon-stroke-width: 48px;
+          ion-icon {
+            color: $todo-checkbox-hover-color;
+            visibility: visible;
+            animation: fadeIn 0.5s ease-out;
+          }
+        }
       }
     }
 
@@ -291,24 +332,249 @@ main {
       height: 0;
     }
 
-    .todo-title {
-      grid-area: title;
-    }
+    /* Text of the todo task with details */
+    .todo-text {
+      grid-area: todotext;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
 
-    .details {
-      grid-area: details;
-    }
+      .todo-title {
+        font-size: 1.15em;
+      }
 
+      .details {
+        font-size: 0.8em;
+
+        span {
+          margin-right: 7px;
+
+          img {
+            position: relative;
+            top: 2px;
+          }
+
+          &.overdue-date {
+            color: $overdue-date-color;
+          }
+
+          &.high-priority {
+            color: $high-priority-color;
+          }
+          &.medium-priority {
+            color: $medium-priority-color;
+          }
+        }
+      }
+    }
     .delete-todo-btn {
       grid-area: btn;
+      visibility: hidden;
+      position: relative;
+      font-size: 24px;
+      outline: none;
+      border: none;
+      background: $project-container-bg-color;
+      color: $todo-delete-btn-color;
+      cursor: pointer;
+      transition: color 0.2s;
+
+      &:hover {
+        color: $todo-delete-btn-hover-color;
+      }
+      &:focus {
+        color: $todo-delete-btn-focus-color;
+      }
+    }
+  }
+
+  hr {
+    position: relative;
+    bottom: 20px;
+    margin-top: auto;
+    margin-right: -20px;
+    margin-left: -20px;
+    height: 10px;
+    border: 0;
+    box-shadow: 0 -10px 10px -10px #8c8c8c inset;
+  }
+
+  /* User input todo tasks*/
+  #new-todo-form {
+    display: flex;
+
+    /* Input */
+    #new-todo {
+      width: 100%;
+      border: 0;
+      border-bottom: 2px solid $project-form-inactive-color;
+      margin-left: 2px;
+      margin-right: auto;
+      padding: 9px 0;
+      outline: 0;
+      font-size: 1em;
+      color: $project-form-inactive-color;
+      background: transparent;
+      font-family: "Sen", sans-serif;
+
+      &:focus {
+        transition: 0.7s;
+        color: $project-form-font-color;
+        border-bottom: 2px solid $project-form-border-color;
+        &::placeholder {
+          transition: 0.7s;
+          color: $project-form-font-color;
+        }
+      }
+    }
+
+    /* Submit button */
+    #submit-todo {
+      background: $project-container-bg-color;
+      display: inline-block;
+      border: none;
+      position: relative;
+      top: 0px;
+      left: 10px;
+      text-decoration: none;
+      font-size: 24px;
+      cursor: pointer;
+      text-align: center;
+      padding: 6px;
+
+      ion-icon {
+        --ionicon-stroke-width: 48px;
+        color: $project-form-inactive-color;
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        z-index: 0;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        border: 2px solid $project-container-bg-color;
+        border-radius: 5px;
+        transition: 0.5s;
+      }
+      &:hover {
+        color: $project-form-font-color;
+        &::after {
+          border: 2px solid $project-form-border-color;
+          border-radius: 5px;
+        }
+        ion-icon {
+          color: $project-form-font-color;
+        }
+      }
     }
   }
 }
 
+/* Right side of the page */
 #todo-misc-container {
   grid-area: todo-misc;
-  background: $todo-misc-container-bg-color;
-  -webkit-box-shadow: -8px 0px 5px -4px $shadows-color;
-  -moz-box-shadow: -8px 0px 5px -4px $shadows-color;
-  box-shadow: -8px 0px 5px -4px $shadows-color;
+  background: $body-bg-color;
+  display: flex;
+  flex-direction: column;
+
+  #todo-name-changer-container,
+  #date-changer,
+  #priority-container,
+  #note-container {
+    background: $project-container-bg-color;
+    margin-right: 20px;
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 5px 2px $shadows-color;
+    -moz-box-shadow: 0px 0px 5px 2px $shadows-color;
+    box-shadow: 0px 0px 5px 2px $shadows-color;
+  }
+
+  #todo-name-changer-container {
+    height: 60px;
+  }
+
+  #note-container {
+    height: 200px;
+  }
+
+  #date-changer,
+  #priority-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    #priority-levels {
+      .low-priority:hover {
+        color: green;
+      }
+
+      .medium-priority:hover {
+        color: $medium-priority-color;
+      }
+
+      .medium-priority:hover ~ .low-priority {
+        color: $medium-priority-color;
+      }
+
+      .high-priority:hover {
+        color: $high-priority-color;
+      }
+
+      ion-icon {
+        font-size: 16px;
+        cursor: pointer;
+      }
+    }
+
+    #date-remover ion-icon {
+      position: relative;
+      top: 4px;
+      color: $project-form-inactive-color;
+      cursor: pointer;
+
+      &:hover {
+        color: black;
+      }
+    }
+  }
+
+  .misc-title {
+    font-size: 1em;
+    color: $project-form-inactive-color;
+    width: 120px;
+  }
+
+  textarea {
+    outline: none;
+    resize: none;
+    overflow: hidden;
+    width: 100%;
+    border: none;
+    &::placeholder {
+      color: $project-form-inactive-color;
+    }
+    &:focus::placeholder {
+      color: $project-form-font-color;
+    }
+  }
+
+  input[type="date"] {
+    outline: none;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+.medium-priority:hover ~ .low-priority {
+  color: $medium-priority-color;
 }

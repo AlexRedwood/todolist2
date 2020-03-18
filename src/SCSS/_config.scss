@@ -1,4 +1,5 @@
-$header-bg-color: rgb(82, 104, 81);
+$header-bg-color: rgb(16, 104, 119);
+$menu-icon-bg-color: rgb(11, 80, 92);
 $header-font-color: #f4f4f4;
 
 $body-bg-color: rgb(233, 233, 233);
@@ -15,16 +16,20 @@ $project-form-font-color: #11998e;
 $project-form-border-color: #38ef7d;
 $project-form-inactive-color: grey;
 
-$project-delete-btn-color: rgb(207, 11, 11);
+$project-delete-btn-color: rgb(197, 197, 197);
+$project-delete-btn-hover-color: rgb(153, 153, 153);
+$project-delete-btn-focus-color: rgb(110, 110, 110);
 
 $todo-border-color: lightgrey;
 $todo-hover-shadow-color: rgb(228, 228, 228);
 
-// set text color based on background
-@function set-text-color($color) {
-  @if (lightness($color) > 70) {
-    @return #333;
-  } @else {
-    @return #fff;
-  }
-}
+$todo-checkbox-inactive-color: rgb(197, 197, 197);
+$todo-checkbox-hover-color: rgb(226, 176, 233);
+
+$medium-priority-color: rgb(50, 39, 206);
+$high-priority-color: rgb(225, 0, 255);
+$overdue-date-color: red;
+
+$todo-delete-btn-color: rgb(212, 212, 212);
+$todo-delete-btn-hover-color: rgb(184, 184, 184);
+$todo-delete-btn-focus-color: rgb(146, 146, 146);
