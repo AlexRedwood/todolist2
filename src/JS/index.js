@@ -1,2 +1,6 @@
 import "../SCSS/style.scss";
-import html from "../HTML/template.html";
+import { showProjectContainer } from "./style.js";
+
+document
+  .getElementById("menu-icon")
+  .addEventListener("click", () => showProjectContainer());

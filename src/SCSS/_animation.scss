@@ -26,3 +26,18 @@
     opacity: 1;
   }
 }
+
+.hiddenToLeft {
+  #project-container {
+    transform: translateX(-232px);
+
+    .project-icon {
+      transform: translateX(+232px);
+    }
+  }
+
+  main {
+    width: calc(100% + 200px);
+    transform: translateX(-232px);
+  }
+}

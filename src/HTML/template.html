@@ -28,15 +28,19 @@
             <span class="project-icon">
               <ion-icon name="albums-outline"></ion-icon>
             </span>
-            <span class="project-name">All tasks</span>
-            <span class="count-todos">1</span>
+            <div class="project-title-count-container">
+              <span class="project-name">All tasks</span>
+              <span class="count-todos">1</span>
+            </div>
           </li>
           <li class="project">
             <span class="project-icon">
               <ion-icon name="reader-outline"></ion-icon>
             </span>
-            <span class="project-name">Project 1</span>
-            <span class="count-todos">2</span>
+            <div class="project-title-count-container">
+              <span class="project-name">Project 1</span>
+              <span class="count-todos">2</span>
+            </div>
             <button type="button" class="delete-project-btn">
               <ion-icon name="close-circle"></ion-icon>
             </button>
@@ -45,8 +49,10 @@
             <span class="project-icon">
               <ion-icon name="reader-outline"></ion-icon>
             </span>
-            <span class="project-name">Project 5 </span>
-            <span class="count-todos">23</span>
+            <div class="project-title-count-container">
+              <span class="project-name">Project 5 </span>
+              <span class="count-todos">232</span>
+            </div>
             <button type="button" class="delete-project-btn">
               <ion-icon name="close-circle"></ion-icon>
             </button>
@@ -55,8 +61,10 @@
             <span class="project-icon">
               <ion-icon name="reader-outline"></ion-icon>
             </span>
-            <span class="project-name">Learn English</span>
-            <span class="count-todos">11</span>
+            <div class="project-title-count-container">
+              <span class="project-name">Learn English</span>
+              <span class="count-todos">11</span>
+            </div>
             <button type="button" class="delete-project-btn">
               <ion-icon name="close-circle"></ion-icon>
             </button>
@@ -226,6 +234,10 @@
             placeholder="Leave a note"
             autocomplete="off"
           ></textarea>
+        </div>
+
+        <div id="close-details-btn">
+          <ion-icon name="chevron-forward-outline"></ion-icon>
         </div>
       </aside>
     </div>

@@ -29,11 +29,11 @@ body {
   grid-template-areas:
     "header header header"
     "projects main todo-misc";
+  transition: 3s;
 }
 
 header {
   grid-area: header;
-  /*height: 60px;*/
   display: flex;
   -webkit-box-align: center;
   align-items: center;
@@ -81,6 +81,7 @@ header {
   -webkit-box-shadow: 8px 0px 5px -4px $shadows-color;
   -moz-box-shadow: 8px 0px 5px -4px $shadows-color;
   box-shadow: 8px 0px 5px -4px $shadows-color;
+  transition: transform 1s;
 
   #project-list {
     width: 280px;
@@ -96,6 +97,7 @@ header {
       word-wrap: break-word;
       white-space: normal;
       overflow: hidden;
+      transition: 0.7s;
 
       &.active {
         color: $project-active-font-color;
@@ -114,26 +116,39 @@ header {
       }
 
       .project-icon {
-        margin-right: 5px;
         font-size: 24px;
+        margin-right: 20px;
+        transition: transform 1s;
+      }
+
+      .project-title-count-container {
+        display: flex;
+        transition: opacity 0.7s, visibility 0.7s;
+        align-items: center;
+        justify-content: flex-start;
       }
 
       .project-name {
-        width: 180px;
-        max-width: 180px;
+        width: 155px;
+        max-width: 155px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
 
       .count-todos {
-        margin-right: auto;
         font-size: 0.8em;
         font-weight: 900;
+        margin-left: auto;
+        width: 29px;
+        padding-right: 5px;
       }
 
       .delete-project-btn {
         visibility: hidden;
         position: relative;
-        /*  left: 30px; */
         font-size: 24px;
+        margin-left: auto;
         outline: none;
         border: none;
         background: $project-container-bg-color;
@@ -159,6 +174,7 @@ header {
     margin-left: 15px;
     margin-right: 0;
     display: flex;
+    transition: opacity 0.3s, visibility 0.5s;
 
     /* Input */
     #new-project {
@@ -236,6 +252,7 @@ header {
 /* Middle: Project title, todo tasks*/
 main {
   grid-area: main;
+  min-width: 377px;
   background: $main-bg-color;
   padding: 20px;
   margin: 20px;
@@ -245,6 +262,7 @@ main {
   -webkit-box-shadow: 0px 0px 5px 2px $shadows-color;
   -moz-box-shadow: 0px 0px 5px 2px $shadows-color;
   box-shadow: 0px 0px 5px 2px $shadows-color;
+  transition: transform 1s;
 
   #project-title {
     margin-bottom: 20px;
@@ -329,9 +347,7 @@ main {
     }
 
     .todo-checkbox {
-      opacity: 0;
-      position: absolute;
-      left: 99999px;
+      display: none;
     }
 
     /* Text of the todo task with details */
@@ -486,27 +502,42 @@ main {
   background: $body-bg-color;
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
 
   #todo-name-changer-container,
   #date-changer,
   #priority-container,
   #note-container {
     background: $project-container-bg-color;
-    margin-right: 20px;
-    margin-top: 20px;
+    margin-right: 0px;
+    margin-top: 0px;
+    border-bottom: 2px solid $todo-border-color;
+    border-left: 2px solid $todo-border-color;
     padding: 15px;
-    border-radius: 5px;
-    -webkit-box-shadow: 0px 0px 5px 2px $shadows-color;
-    -moz-box-shadow: 0px 0px 5px 2px $shadows-color;
-    box-shadow: 0px 0px 5px 2px $shadows-color;
+    -webkit-box-shadow: -3px 0px 5px -2px $shadows-color;
+    -moz-box-shadow: -3px 0px 5px -2px $shadows-color;
+    box-shadow: -3px 0px 5px -2px $shadows-color;
   }
 
   #todo-name-changer-container {
     height: 60px;
+    border-radius: 5px 0 0 0;
+    -webkit-box-shadow: -2px -2px 5px -1px $shadows-color;
+    -moz-box-shadow: -2px -2px 5px -1px $shadows-color;
+    box-shadow: -2px -2px 5px -1px $shadows-color;
+    textarea {
+      height: 40px;
+    }
   }
 
   #note-container {
     height: 200px;
+    -webkit-box-shadow: -3px 4px 5px -2px $shadows-color;
+    -moz-box-shadow: -3px 4px 5px -2px $shadows-color;
+    box-shadow: -3px 4px 5px -2px $shadows-color;
+    textarea {
+      height: 160px;
+    }
   }
 
   #date-changer,
@@ -543,6 +574,7 @@ main {
       top: 4px;
       color: $project-form-inactive-color;
       cursor: pointer;
+      --ionicon-stroke-width: 48px;
 
       &:hover {
         color: black;
@@ -557,6 +589,7 @@ main {
   }
 
   textarea {
+    background: $project-container-bg-color;
     outline: none;
     resize: none;
     overflow: hidden;
@@ -577,8 +610,31 @@ main {
     border: none;
     cursor: pointer;
   }
-}
 
-.medium-priority:hover ~ .low-priority {
-  color: $medium-priority-color;
+  #close-details-btn {
+    font-size: 48px;
+
+    ion-icon {
+      --ionicon-stroke-width: 48px;
+      background: $project-container-bg-color;
+      border-radius: 0 0 5px 5px;
+      border-left: 2px solid $todo-border-color;
+      border-right: 2px solid $todo-border-color;
+      border-bottom: 2px solid $todo-border-color;
+      width: 60px;
+      color: $project-delete-btn-color;
+      cursor: pointer;
+
+      -webkit-box-shadow: inset 0px 15px 7px -13px $shadows-color,
+        0px 5px 10px 0px $shadows-color;
+      -moz-box-shadow: inset 0px 15px 7px -13px $shadows-color,
+        0px 5px 10px 0px $shadows-color;
+      box-shadow: inset 0px 15px 7px -13px $shadows-color,
+        0px 5px 10px 0px $shadows-color;
+
+      &:hover {
+        color: $project-delete-btn-focus-color;
+      }
+    }
+  }
 }
