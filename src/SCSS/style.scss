@@ -24,12 +24,13 @@ body {
   display: grid;
   height: 100%;
   grid-template-rows: 60px auto;
-  grid-template-columns: 300px auto 350px;
-  /* grid-template-columns: 300px auto 0; */
+  grid-template-columns: 300px auto 330px;
   grid-template-areas:
     "header header header"
     "projects main todo-misc";
-  transition: 3s;
+
+  @media screen and (max-width: 1024px) {
+  }
 }
 
 header {
@@ -81,7 +82,6 @@ header {
   -webkit-box-shadow: 8px 0px 5px -4px $shadows-color;
   -moz-box-shadow: 8px 0px 5px -4px $shadows-color;
   box-shadow: 8px 0px 5px -4px $shadows-color;
-  transition: transform 1s;
 
   #project-list {
     width: 280px;
@@ -97,7 +97,6 @@ header {
       word-wrap: break-word;
       white-space: normal;
       overflow: hidden;
-      transition: 0.7s;
 
       &.active {
         color: $project-active-font-color;
@@ -118,12 +117,10 @@ header {
       .project-icon {
         font-size: 24px;
         margin-right: 20px;
-        transition: transform 1s;
       }
 
       .project-title-count-container {
         display: flex;
-        transition: opacity 0.7s, visibility 0.7s;
         align-items: center;
         justify-content: flex-start;
       }
@@ -174,7 +171,6 @@ header {
     margin-left: 15px;
     margin-right: 0;
     display: flex;
-    transition: opacity 0.3s, visibility 0.5s;
 
     /* Input */
     #new-project {
@@ -262,7 +258,11 @@ main {
   -webkit-box-shadow: 0px 0px 5px 2px $shadows-color;
   -moz-box-shadow: 0px 0px 5px 2px $shadows-color;
   box-shadow: 0px 0px 5px 2px $shadows-color;
-  transition: transform 1s;
+
+  @media screen and (max-width: 1024px) {
+    grid-row: 2 / 3;
+    grid-column: 2 / 4;
+  }
 
   #project-title {
     margin-bottom: 20px;
@@ -503,6 +503,13 @@ main {
   display: flex;
   flex-direction: column;
   margin-top: 20px;
+
+  @media screen and (max-width: 1024px) {
+    z-index: 1;
+    -webkit-box-shadow: -3px 0px 5px -2px $shadows-color;
+    -moz-box-shadow: -3px 0px 5px -2px $shadows-color;
+    box-shadow: -3px 0px 5px -2px $shadows-color;
+  }
 
   #todo-name-changer-container,
   #date-changer,
