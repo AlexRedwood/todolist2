@@ -29,7 +29,8 @@ body {
     "header header header"
     "projects main todo-misc";
 
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 68px auto 330px;
   }
 }
 
@@ -87,8 +88,12 @@ header {
     width: 280px;
     max-width: 280px;
 
+    @media screen and (max-width: 768px) {
+      width: 68px;
+    }
+
     .project {
-      margin: 10px 0px;
+      margin: 10px 0;
       padding: 10px;
       border-radius: 5px;
       display: flex;
@@ -97,6 +102,12 @@ header {
       word-wrap: break-word;
       white-space: normal;
       overflow: hidden;
+
+      @media screen and (max-width: 768px) {
+        margin: 10px 0;
+        padding: 10px 10px 10px 22px;
+        border-radius: 0;
+      }
 
       &.active {
         color: $project-active-font-color;
@@ -117,12 +128,20 @@ header {
       .project-icon {
         font-size: 24px;
         margin-right: 20px;
+
+        @media screen and (max-width: 768px) {
+          margin-right: 0;
+        }
       }
 
       .project-title-count-container {
         display: flex;
         align-items: center;
         justify-content: flex-start;
+
+        @media screen and (max-width: 768px) {
+          display: none;
+        }
       }
 
       .project-name {
@@ -153,6 +172,10 @@ header {
         cursor: pointer;
         transition: color 0.2s;
 
+        @media screen and (max-width: 768px) {
+          display: none;
+        }
+
         &:hover {
           color: $project-delete-btn-hover-color;
         }
@@ -172,6 +195,11 @@ header {
     margin-right: 0;
     display: flex;
 
+    @media screen and (max-width: 768px) {
+      width: 68px;
+      margin: 0;
+    }
+
     /* Input */
     #new-project {
       border: 0;
@@ -184,6 +212,10 @@ header {
       color: $project-form-inactive-color;
       background: transparent;
       font-family: "Sen", sans-serif;
+
+      @media screen and (max-width: 768px) {
+        display: none;
+      }
 
       &:focus {
         transition: 0.7s;
@@ -208,6 +240,12 @@ header {
       cursor: pointer;
       text-align: center;
       padding: 6px;
+
+      @media screen and (max-width: 768px) {
+        padding: 0;
+        left: 4px;
+        padding: 7px 18px;
+      }
 
       ion-icon {
         --ionicon-stroke-width: 48px;
@@ -505,6 +543,7 @@ main {
   margin-top: 20px;
 
   @media screen and (max-width: 1024px) {
+    display: none;
     z-index: 1;
     -webkit-box-shadow: -3px 0px 5px -2px $shadows-color;
     -moz-box-shadow: -3px 0px 5px -2px $shadows-color;
