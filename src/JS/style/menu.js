@@ -12,6 +12,19 @@ function broadenProjectContainer() {
   }
 }
 
+function minimizeProjectContainer() {
+  // Take an array of elements from the page and toggle a class 'broad' on each
+  for (let element of getElementsToBroad()) {
+    addBroad(element);
+  }
+}
+
+function addBroad(element) {
+  // Remove class 'broad' from an element
+  // this class changes left-side page menu making it smaller
+  element.classList.add("broad");
+}
+
 function toggleBroad(element) {
   // Add/remove class 'broad' to an element
   // this class changes left-side page menu making it smaller
@@ -47,4 +60,4 @@ function getElementsToBroad() {
   return elements;
 }
 
-export { menuBtnShowProjects };
+export { menuBtnShowProjects, minimizeProjectContainer };

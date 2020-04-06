@@ -34,6 +34,7 @@ body {
   }
 }
 
+/* --- TOP of the PAGE : HEADER --- */
 header {
   grid-area: header;
   display: flex;
@@ -561,6 +562,9 @@ main {
     -webkit-box-shadow: -3px 0px 5px -2px $shadows-color;
     -moz-box-shadow: -3px 0px 5px -2px $shadows-color;
     box-shadow: -3px 0px 5px -2px $shadows-color;
+    #date {
+      color: $project-form-inactive-color;
+    }
   }
 
   #todo-name-changer-container {

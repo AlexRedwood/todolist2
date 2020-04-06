@@ -3,8 +3,6 @@ function tasksShowDetails() {
   todoListShowDetails();
   // Make button in details interact: hide details
   ArrowHideDetails();
-  // When resizing window middle column resize itself to be responsive
-  responsiveMiddleColumn();
 }
 
 function todoListShowDetails() {
@@ -38,21 +36,6 @@ function showDetails() {
   }
 }
 
-function responsiveMiddleColumn() {
-  let main = document.getElementById("main");
-  let details = document.getElementById("todo-misc-container");
-  // Resizing window makes middle column fit
-  window.matchMedia("(max-width: 1024px)").addListener(() => {
-    if (screenLessThen1024() && getComputedDisplay(details) === "flex") {
-      main.style.gridColumn = "2/4";
-    } else if (getComputedDisplay(details) === "none") {
-      main.style.gridColumn = "2/4";
-    } else {
-      main.style.gridColumn = "2/3";
-    }
-  });
-}
-
 function screenLessThen1024() {
   // Check if screen is less then 1024px wide
   return window.matchMedia("(max-width: 1024px)").matches;
@@ -73,4 +56,4 @@ function hide(element) {
   element.style.display = "none";
 }
 
-export { tasksShowDetails };
+export { tasksShowDetails, screenLessThen1024, getComputedDisplay };
