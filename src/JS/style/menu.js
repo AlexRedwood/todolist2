@@ -1,4 +1,4 @@
-function menuBtnShowProjects() {
+function showProjects() {
   // Make menu button in the top left corner do work (change projects to wide or narrow)
   document
     .getElementById("menu-icon")
@@ -60,4 +60,4 @@ function getElementsToBroad() {
   return elements;
 }
 
-export { menuBtnShowProjects, minimizeProjectContainer };
+export { showProjects, minimizeProjectContainer };

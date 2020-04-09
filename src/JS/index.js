@@ -1,11 +1,23 @@
 import "../SCSS/style.scss";
-import { menuBtnShowProjects } from "./style/menu.js";
+import * as MenuBtn from "./style/menu.js";
 import { tasksShowDetails } from "./style/details.js";
-import { responsiveResize } from "./style/responsiveResize.js";
+import * as Resize from "./style/resize.js";
 import {} from "./tasks/factory.js";
-import {} from "./tasks/add.js";
+import * as AddTaskBtn from "./tasks/add.js";
 import {} from "./tasks/render.js";
+import * as Defaults from "./tasks/defaults.js";
 
-menuBtnShowProjects();
+// Style
+MenuBtn.showProjects();
+Resize.responsive();
 tasksShowDetails();
-responsiveResize();
+
+// App Logic
+let tasks = [...Defaults.get()];
+
+AddTaskBtn.addTaskTo(tasks);
+
+document.getElementById("submit-project").addEventListener("click", event => {
+  event.preventDefault();
+  console.table(tasks);
+});

@@ -1,40 +1,28 @@
 import { taskFactory } from "./factory.js";
 
-let allTasks = [
-  taskFactory({
-    title: "Learn stuff",
-    from: "Project 2",
-    date: "15.03.2020",
-    priority: "Medium",
-    note: true
-  }),
-  taskFactory({
-    title: "Learn english",
-    date: "10.01.2020"
-  }),
-  taskFactory({
-    title: "Learn stuff",
-    from: "Project 2",
-    priority: "High",
-    note: true,
-    done: true
-  })
-];
+function addTaskTo(arr) {
+  const submitTodoBtn = document.getElementById("submit-todo");
 
-const submitTodoBtn = document.getElementById("submit-todo");
+  submitTodoBtn.addEventListener("click", function(event) {
+    // Prevent default submit behavior
+    event.preventDefault();
+    // Get task name from User and add it to tasks array
+    pushTaskTo(arr);
+    console.table(arr);
+    return arr;
+  });
+}
 
-submitTodoBtn.addEventListener("click", function(event) {
-  // Prevent default submit behavior
-  event.preventDefault();
-  // Get task name from User and add it to All Tasks Array
-  allTasks.push(getTask());
-
-  console.table(allTasks);
-});
+function pushTaskTo(arr) {
+  // Push task to array
+  arr.push(getTask());
+  return arr;
+}
 
 function getTask() {
-  // Get user input value, save it and then clear input
+  // Get user input value, save it
   let task = taskFactory({ title: getInputValue() });
+  // and clear input
   clearTaskInput();
   return task;
 }
@@ -48,3 +36,5 @@ function clearTaskInput() {
   // Clear user input
   document.getElementById("new-todo").value = "";
 }
+
+export { getTask, addTaskTo };

@@ -1,3 +1,5 @@
+import { screenLessThen1024 } from "./resize.js";
+
 function tasksShowDetails() {
   // Make todo tasks show details on click (from right side)
   todoListShowDetails();
@@ -36,11 +38,6 @@ function showDetails() {
   }
 }
 
-function screenLessThen1024() {
-  // Check if screen is less then 1024px wide
-  return window.matchMedia("(max-width: 1024px)").matches;
-}
-
 function getComputedDisplay(element) {
   let computedDisplay = window
     .getComputedStyle(element)
@@ -56,4 +53,4 @@ function hide(element) {
   element.style.display = "none";
 }
 
-export { tasksShowDetails, screenLessThen1024, getComputedDisplay };
+export { tasksShowDetails, getComputedDisplay };
