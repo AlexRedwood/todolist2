@@ -402,12 +402,18 @@ main {
       .details {
         font-size: 0.8em;
 
+        .from-project,
+        .due-date,
+        .medium-priority,
+        .high-priority,
+        .note-presence {
+          margin-right: 8px;
+        }
         span {
-          margin-right: 7px;
-
           img {
             position: relative;
             top: 2px;
+            margin-right: 4px;
           }
 
           &.overdue-date {

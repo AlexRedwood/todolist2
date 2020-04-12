@@ -13,11 +13,14 @@ Resize.responsive();
 tasksShowDetails();
 
 // App Logic
+
+// define tasks array which is todolist
 let tasks = [...Defaults.get()];
 
+// Make button New Task add task to a defined array
 AddTaskBtn.addTaskTo(tasks);
 
-document.getElementById("submit-project").addEventListener("click", event => {
+document.getElementById("submit-project").addEventListener("click", (event) => {
   event.preventDefault();
   console.table(tasks);
 });

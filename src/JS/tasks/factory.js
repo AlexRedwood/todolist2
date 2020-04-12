@@ -1,10 +1,10 @@
-const taskFactory = function({
+const taskFactory = function ({
   title = "",
   from = "",
   date = "",
-  priority = "Low",
+  priority = "low",
   note = false,
-  done = false
+  done = false,
 }) {
   return { title, from, date, priority, note, done };
 };

@@ -7,20 +7,20 @@ function get() {
       title: "Learn stuff",
       from: "Project 2",
       date: "15.03.2020",
-      priority: "Medium",
-      note: true
+      priority: "medium",
+      note: true,
     }),
     taskFactory({
       title: "Learn english",
-      date: "10.01.2020"
+      date: "10.01.2020",
     }),
     taskFactory({
       title: "Learn stuff",
       from: "Project 2",
-      priority: "High",
+      priority: "high",
       note: true,
-      done: true
-    })
+      done: true,
+    }),
   ];
 
   return allTasks;
