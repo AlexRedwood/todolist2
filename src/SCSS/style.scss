@@ -549,6 +549,9 @@ main {
   margin-top: 20px;
   z-index: 1;
 
+  #details-container {
+  }
+
   @media screen and (max-width: 1024px) {
     -webkit-box-shadow: -3px 0px 5px -2px $shadows-color;
     -moz-box-shadow: -3px 0px 5px -2px $shadows-color;

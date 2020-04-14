@@ -1,22 +1,45 @@
 import Calendar from "../../ICONS/calendar.svg";
 import Note from "../../ICONS/edit.svg";
 
-function createNewTask({ task }) {}
+function renderAllTasksFrom(arr) {
+  // Clear all previously rendered elements from the page
+  clearContentOf("todos");
+  //Render each element of the array to the page
+  for (let [index, item] of arr.entries()) {
+    renderTask(index, item);
+  }
+}
 
-// Example of creating a one todo
-document.getElementById("todos").append(createTodoLi(12));
+function clearContentOf(id) {
+  // Remove any child of the element with id
+  let contentContainer = document.getElementById(id);
 
-function createTodoLi(i) {
+  while (contentContainer.firstChild) {
+    contentContainer.removeChild(contentContainer.firstChild);
+  }
+}
+
+function renderTask(i, task) {
+  document.getElementById("todos").append(createTask(i, task));
+}
+
+function createTask(i, task) {
+  console.log(task);
   // create list element with a class 'todo'
   let li = document.createElement("li");
   li.setAttribute("class", "todo");
   // Append label, input, div and button to it
   li.append(createLabel(i));
   li.append(createInput(i));
-  li.append(createContent("Hello", "Project 0", "11.02.2020", "medium"));
+  li.append(
+    createContent(task.title, task.from, task.date, task.priority, task.note)
+  );
+  li.append(createDeleteBtn(i));
 
   return li;
 }
+
+// LABEL
 
 function createLabel(i) {
   // returns label for "todocheckbox" + i
@@ -38,6 +61,8 @@ function createDoneIcon() {
   return container;
 }
 
+// INPUT
+
 function createInput(i) {
   // Create input checkbox element after the label
   let checkbox = document.createElement("input");
@@ -48,12 +73,14 @@ function createInput(i) {
   return checkbox;
 }
 
-function createContent(title, from, date, priority) {
+// CONTENT = task title and details
+
+function createContent(title, from, date, priority, note) {
   let content = document.createElement("div");
   content.setAttribute("class", "todo-text");
   // Append title and details to content
   content.appendChild(createTitle(title));
-  content.appendChild(createDetails(from, date, priority));
+  content.appendChild(createDetails(from, date, priority, note));
 
   return content;
 }
@@ -65,13 +92,13 @@ function createTitle(str) {
   return title;
 }
 
-function createDetails(from, date, priority) {
+function createDetails(from, date, priority, note) {
   let details = document.createElement("div");
   details.setAttribute("class", "details");
-  details.appendChild(createFrom(from));
-  details.appendChild(createDue(date));
-  details.appendChild(createPriority(priority));
-  details.appendChild(createNote());
+  if (from) details.appendChild(createFrom(from));
+  if (date) details.appendChild(createDue(date));
+  if (priority !== "low") details.appendChild(createPriority(priority));
+  if (note) details.appendChild(createNote());
   return details;
 }
 
@@ -140,3 +167,21 @@ function createNote() {
   span.appendChild(text);
   return span;
 }
+
+// DELETE BUTTON
+function createDeleteBtn(i) {
+  let btn = document.createElement("button");
+  btn.setAttribute("type", "button");
+  btn.setAttribute("class", "delete-todo-btn");
+  btn.setAttribute("id", `delete-btn${i}`);
+
+  // create an icon and append it to button
+  let icon = document.createElement("ion-icon");
+  icon.setAttribute("name", "close-circle");
+
+  btn.appendChild(icon);
+
+  return btn;
+}
+
+export { renderAllTasksFrom };

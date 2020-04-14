@@ -2,9 +2,9 @@ import "../SCSS/style.scss";
 import * as MenuBtn from "./style/menu.js";
 import { tasksShowDetails } from "./style/details.js";
 import * as Resize from "./style/resize.js";
-import {} from "./tasks/factory.js";
+import { taskFactory } from "./tasks/factory.js";
 import * as AddTaskBtn from "./tasks/add.js";
-import {} from "./tasks/render.js";
+import { renderAllTasksFrom } from "./tasks/render.js";
 import * as Defaults from "./tasks/defaults.js";
 
 // Style
@@ -17,10 +17,8 @@ tasksShowDetails();
 // define tasks array which is todolist
 let tasks = [...Defaults.get()];
 
-// Make button New Task add task to a defined array
-AddTaskBtn.addTaskTo(tasks);
+// Render default tasks form tasks array
+renderAllTasksFrom(tasks);
 
-document.getElementById("submit-project").addEventListener("click", (event) => {
-  event.preventDefault();
-  console.table(tasks);
-});
+// Button to add task to a defined array
+AddTaskBtn.addTaskTo(tasks);

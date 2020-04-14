@@ -90,7 +90,7 @@
       <main id="main">
         <div id="project-title">All tasks</div>
         <ul id="todos">
-          <li class="todo">
+          <!-- <li class="todo">
             <label for="todocheckbox1">
               <div class="todo-icon-container">
                 <ion-icon name="checkmark-outline"></ion-icon>
@@ -172,7 +172,7 @@
             <button type="button" class="delete-todo-btn">
               <ion-icon name="close-circle"></ion-icon>
             </button>
-          </li>
+          </li> -->
         </ul>
 
         <!-- USER INPUT MIDDLE -->
@@ -193,51 +193,53 @@
 
       <!--  RIGHT SIDE OF THE PAGE -->
       <aside id="todo-misc-container">
-        <div id="todo-name-changer-container">
-          <textarea
-            class="todo-name-changer"
-            maxlength="200"
-            placeholder="New name"
-            autocomplete="off"
-          ></textarea>
-        </div>
-
-        <div id="date-changer">
-          <div class="misc-title">Date</div>
-          <label for="date" id="date-label">
-            <input id="date" type="date" />
-            <!-- <span id="date-remover">
-              <ion-icon name="close-outline"></ion-icon>
-            </span> -->
-          </label>
-        </div>
-
-        <div id="priority-container">
-          <div class="misc-title">Priority</div>
-          <div id="priority-levels">
-            <span class="low-priority default">
-              <ion-icon name="star-outline"></ion-icon>
-            </span>
-            <span class="medium-priority">
-              <ion-icon name="star-outline"></ion-icon>
-            </span>
-            <span class="high-priority">
-              <ion-icon name="star-outline"></ion-icon>
-            </span>
+        <div id="details-container">
+          <div id="todo-name-changer-container">
+            <textarea
+              class="todo-name-changer"
+              maxlength="200"
+              placeholder="New name"
+              autocomplete="off"
+            ></textarea>
           </div>
-        </div>
 
-        <div id="note-container">
-          <textarea
-            class="note-changer"
-            maxlength="200"
-            placeholder="Leave a note"
-            autocomplete="off"
-          ></textarea>
-        </div>
+          <div id="date-changer">
+            <div class="misc-title">Date</div>
+            <label for="date" id="date-label">
+              <input id="date" type="date" />
+              <!-- <span id="date-remover">
+                <ion-icon name="close-outline"></ion-icon>
+              </span> -->
+            </label>
+          </div>
 
-        <div id="close-details-btn">
-          <ion-icon name="chevron-forward-outline"></ion-icon>
+          <div id="priority-container">
+            <div class="misc-title">Priority</div>
+            <div id="priority-levels">
+              <span class="low-priority default">
+                <ion-icon name="star-outline"></ion-icon>
+              </span>
+              <span class="medium-priority">
+                <ion-icon name="star-outline"></ion-icon>
+              </span>
+              <span class="high-priority">
+                <ion-icon name="star-outline"></ion-icon>
+              </span>
+            </div>
+          </div>
+
+          <div id="note-container">
+            <textarea
+              class="note-changer"
+              maxlength="200"
+              placeholder="Leave a note"
+              autocomplete="off"
+            ></textarea>
+          </div>
+
+          <div id="close-details-btn">
+            <ion-icon name="chevron-forward-outline"></ion-icon>
+          </div>
         </div>
       </aside>
     </div>

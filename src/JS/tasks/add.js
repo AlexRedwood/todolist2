@@ -1,14 +1,18 @@
 import { taskFactory } from "./factory.js";
+import { renderAllTasksFrom } from "./render.js";
 
 function addTaskTo(arr) {
   const submitTodoBtn = document.getElementById("submit-todo");
 
-  submitTodoBtn.addEventListener("click", function(event) {
+  submitTodoBtn.addEventListener("click", function (event) {
     // Prevent default submit behavior
     event.preventDefault();
     // Get task name from User and add it to tasks array
     pushTaskTo(arr);
     console.table(arr);
+    // Render each array to the page
+    renderAllTasksFrom(arr);
+
     return arr;
   });
 }
