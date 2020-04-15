@@ -297,7 +297,7 @@ main {
   -webkit-box-shadow: 0px 0px 5px 2px $shadows-color;
   -moz-box-shadow: 0px 0px 5px 2px $shadows-color;
   box-shadow: 0px 0px 5px 2px $shadows-color;
-
+  grid-column: 2 / 4;
   @media screen and (max-width: 1024px) {
     grid-column: 2 / 4;
   }
@@ -464,7 +464,6 @@ main {
   /* User input todo tasks*/
   #new-todo-form {
     display: flex;
-
     /* Input */
     #new-todo {
       width: 100%;
@@ -544,7 +543,7 @@ main {
 #todo-misc-container {
   grid-area: todo-misc;
   background: $body-bg-color;
-  display: flex;
+  display: none;
   flex-direction: column;
   margin-top: 20px;
   z-index: 1;

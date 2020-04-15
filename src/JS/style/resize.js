@@ -1,4 +1,4 @@
-import { getComputedDisplay } from "./details.js";
+import { getComputedDisplay } from "../tasks/detailsToggle.js";
 import { minimizeProjectContainer } from "./menu.js";
 
 function responsive() {

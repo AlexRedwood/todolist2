@@ -55,7 +55,7 @@ function getElementsToBroad() {
     ...deleteProjectBtn,
     newProjectForm,
     newProject,
-    submitProject
+    submitProject,
   ];
   return elements;
 }

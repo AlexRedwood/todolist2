@@ -1,5 +1,7 @@
 import Calendar from "../../ICONS/calendar.svg";
 import Note from "../../ICONS/edit.svg";
+import * as DeleteTaskBtns from "./delete.js";
+import * as DetailsToggle from "./detailsToggle.js";
 
 function renderAllTasksFrom(arr) {
   // Clear all previously rendered elements from the page
@@ -8,6 +10,10 @@ function renderAllTasksFrom(arr) {
   for (let [index, item] of arr.entries()) {
     renderTask(index, item);
   }
+  // Make delete buttons on click remove task to which they are assigned
+  DeleteTaskBtns.deleteTasksFrom(arr);
+  // Make each task show its details on click
+  DetailsToggle.tasksToggleDetails();
 }
 
 function clearContentOf(id) {
@@ -24,10 +30,10 @@ function renderTask(i, task) {
 }
 
 function createTask(i, task) {
-  console.log(task);
   // create list element with a class 'todo'
   let li = document.createElement("li");
   li.setAttribute("class", "todo");
+  li.setAttribute("id", `task-${i}`);
   // Append label, input, div and button to it
   li.append(createLabel(i));
   li.append(createInput(i));
@@ -69,7 +75,7 @@ function createInput(i) {
   // Add attributes
   checkbox.setAttribute("type", "checkbox");
   checkbox.setAttribute("class", "todo-checkbox");
-  checkbox.setAttribute("id", `todocheckbox${i}`);
+  checkbox.setAttribute("id", `todocheckbox-${i}`);
   return checkbox;
 }
 
@@ -173,7 +179,7 @@ function createDeleteBtn(i) {
   let btn = document.createElement("button");
   btn.setAttribute("type", "button");
   btn.setAttribute("class", "delete-todo-btn");
-  btn.setAttribute("id", `delete-btn${i}`);
+  btn.setAttribute("id", `deletebtn-${i}`);
 
   // create an icon and append it to button
   let icon = document.createElement("ion-icon");

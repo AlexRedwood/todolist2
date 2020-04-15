@@ -10,7 +10,7 @@ function addTaskTo(arr) {
     // Get task name from User and add it to tasks array
     pushTaskTo(arr);
     console.table(arr);
-    // Render each array to the page
+    // Rerender array
     renderAllTasksFrom(arr);
 
     return arr;
