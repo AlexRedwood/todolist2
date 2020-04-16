@@ -1,28 +1,11 @@
 import * as DetailsToggle from "./detailsToggle.js";
 
-// Clear all input in details -----------------------
-function clearInput() {
-  clearNameInput();
-  setDateInput();
-  clearNoteInput();
+function putTaskInfoToInput(task) {
+  // Function to put info from tasks in inputs when details are shown
+  setNameInput(task.title);
+  setDateInput(task.date);
+  setNoteInput(task.note);
 }
-
-function clearNameInput() {
-  document.getElementById("todo-name-changer").value = "";
-}
-
-function clearDateInput() {
-  document.getElementById("date").value = "";
-}
-
-function setPiority(level) {
-  console.log(level);
-}
-
-function clearNoteInput() {
-  document.getElementById("note-changer").value = "";
-}
-// ---------------------------------------------------
 
 // Get input
 function getNameInput() {
@@ -52,8 +35,13 @@ function setNameInput(name) {
 }
 
 function setDateInput(date) {
-  document.getElementById("date").value = date;
+  document.getElementById("date").value = formatDate(date);
   console.log(`New date for input is set: ${date}`);
+  formatDate(date);
+}
+
+function setPiority(level) {
+  console.log(level);
 }
 
 function setNoteInput(note) {
@@ -61,4 +49,16 @@ function setNoteInput(note) {
   console.log(`New Note for input is set: ${note}`);
 }
 
-export { getDateInput, clearDateInput };
+function formatDate(date) {
+  // If date is undefined yet, then return nothing ""
+  if (!date) return "";
+  // Date formatting: from "dd.mm.yyyy" to "yyyy-MM-dd"
+  let day = date.split(".")[0];
+  let month = date.split(".")[1];
+  let year = date.split(".")[2];
+
+  let formatted = `${year}-${month}-${day}`;
+  return formatted;
+}
+
+export { putTaskInfoToInput };

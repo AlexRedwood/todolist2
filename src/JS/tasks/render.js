@@ -13,7 +13,7 @@ function renderAllTasksFrom(arr) {
   // Make delete buttons on click remove task to which they are assigned
   DeleteTaskBtns.deleteTasksFrom(arr);
   // Make each task show its details on click
-  DetailsToggle.tasksToggleDetails();
+  DetailsToggle.tasksToggleDetails(arr);
 }
 
 function clearContentOf(id) {
@@ -101,25 +101,27 @@ function createTitle(str) {
 function createDetails(from, date, priority, note) {
   let details = document.createElement("div");
   details.setAttribute("class", "details");
-  if (from) details.appendChild(createFrom(from));
-  if (date) details.appendChild(createDue(date));
-  if (priority !== "low") details.appendChild(createPriority(priority));
-  if (note) details.appendChild(createNote());
+  details.appendChild(createFrom(from));
+  details.appendChild(createDue(date));
+  details.appendChild(createPriority(priority));
+  details.appendChild(createNote(note));
   return details;
 }
 
 function createFrom(from) {
   let span = document.createElement("span");
   span.setAttribute("class", "from-project");
-  span.textContent = `From ${from}`;
+  if (from) span.textContent = `From ${from}`;
   return span;
 }
 
 function createDue(date) {
   let due = document.createElement("span");
   due.setAttribute("class", "due-date");
-  due.appendChild(createCalendarImage());
-  due.appendChild(createSpanForDate(date));
+  if (date) {
+    due.appendChild(createCalendarImage());
+    due.appendChild(createSpanForDate(date));
+  }
   return due;
 }
 
@@ -147,7 +149,8 @@ function createPriority(level) {
 
 function createSpanForPriority(level) {
   let span = document.createElement("span");
-  span.textContent = `${capitalizeFirstLetter(level)} priority`;
+  if (level !== "low")
+    span.textContent = `${capitalizeFirstLetter(level)} priority`;
   return span;
 }
 
@@ -155,22 +158,24 @@ function capitalizeFirstLetter(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-function createNote() {
+function createNote(note) {
   let span = document.createElement("span");
   span.setAttribute("class", "note-presence");
 
-  // create and Append Note Icon
-  let noteIcon = document.createElement("img");
-  noteIcon.setAttribute("src", Note);
-  noteIcon.setAttribute("alt", "Pen");
-  noteIcon.setAttribute("width", "12px");
+  if (note) {
+    // create and Append Note Icon
+    let noteIcon = document.createElement("img");
+    noteIcon.setAttribute("src", Note);
+    noteIcon.setAttribute("alt", "Pen");
+    noteIcon.setAttribute("width", "12px");
 
-  // create and append text
-  let text = document.createElement("span");
-  text.textContent = "Note";
+    // create and append text
+    let text = document.createElement("span");
+    text.textContent = "Note";
 
-  span.appendChild(noteIcon);
-  span.appendChild(text);
+    span.appendChild(noteIcon);
+    span.appendChild(text);
+  }
   return span;
 }
 

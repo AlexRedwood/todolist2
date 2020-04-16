@@ -1,14 +1,14 @@
 import { screenLessThen1024 } from "../style/resize.js";
 import * as DetailsInput from "./detailsInput.js";
 
-function tasksToggleDetails() {
+function tasksToggleDetails(arr) {
   // Make todo tasks show details on click (from right side)
-  todoListShowDetails();
+  todoListShowDetails(arr);
   // Make button in details interact: hide details
   ArrowHideDetails();
 }
 
-function todoListShowDetails() {
+function todoListShowDetails(arr) {
   // Make todo lists show details onclick
   let tasks = document.getElementsByClassName("todo");
 
@@ -18,13 +18,10 @@ function todoListShowDetails() {
       let taskId = e.currentTarget.id;
       // get only number from Id after the hyphen
       let number = taskId.split("-")[1];
-      // Make tasks toggle particular details
+      // Pass a number of the clicked task to details
       toggleDetails(number);
-      // ************************
-      //       details input
-      // ************************
-      DetailsInput.getDateInput();
-      DetailsInput.clearDateInput();
+      // Put info from tasks in inputs when details are shown
+      DetailsInput.putTaskInfoToInput(arr[number]);
     });
   }
 }
@@ -78,6 +75,8 @@ function hideDetails() {
   hide(details);
   // When details are hidden the main column will be broader
   main.style.gridColumn = "2/4";
+  // When details are hidden their details-container-ID will be default with no number
+  makeDetailsDefault();
 }
 
 function showDetails(number) {
@@ -112,4 +111,10 @@ function hide(element) {
   element.style.display = "none";
 }
 
-export { tasksToggleDetails, getComputedDisplay, getDetailsContainerIdNumber };
+export {
+  tasksToggleDetails,
+  getComputedDisplay,
+  getDetailsContainerIdNumber,
+  hideDetails,
+  detailsAreShown,
+};

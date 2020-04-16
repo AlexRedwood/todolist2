@@ -1,4 +1,5 @@
 import { renderAllTasksFrom } from "./render.js";
+import * as DetailsToggle from "./detailsToggle.js";
 
 function deleteTasksFrom(arr) {
   // Take the collcetion of all delete cross buttons from tasks by class name
@@ -17,13 +18,22 @@ function deleteBtnRemoveTask(button, arr) {
     let btnId = e.currentTarget.id;
     // get only number after the hyphen from Id
     let number = btnId.split("-")[1];
-    // remove item from the array by that number
+    // Before removing an item make sure to close its details
+    closeDetailsOfDeletedTask(number);
+    // Remove item from the array by that number
     arr.splice(number, 1);
     // Rerender array
     renderAllTasksFrom(arr);
     // Avoid firing parent element listener after clicking on the button
     e.stopPropagation();
   });
+}
+
+function closeDetailsOfDeletedTask(number) {
+  // Before removing an item make sure his details are not shown
+  // If they are then hide them
+  if (DetailsToggle.getDetailsContainerIdNumber() === number)
+    DetailsToggle.hideDetails();
 }
 
 export { deleteTasksFrom };

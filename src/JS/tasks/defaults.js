@@ -8,7 +8,7 @@ function get() {
       from: "Project 2",
       date: "15.03.2020",
       priority: "medium",
-      note: true,
+      note: "something",
     }),
     taskFactory({
       title: "Learn english",
@@ -18,7 +18,7 @@ function get() {
       title: "Learn stuff",
       from: "Project 2",
       priority: "high",
-      note: true,
+      note: "something",
       done: true,
     }),
   ];

@@ -3,7 +3,7 @@ const taskFactory = function ({
   from = "",
   date = "",
   priority = "low",
-  note = false,
+  note = "",
   done = false,
 }) {
   return { title, from, date, priority, note, done };
