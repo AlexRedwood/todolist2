@@ -397,6 +397,7 @@ main {
 
       .todo-title {
         font-size: 1.15em;
+        overflow-wrap: break-word;
       }
 
       .details {
@@ -407,7 +408,14 @@ main {
         .medium-priority,
         .high-priority,
         .note-presence {
-          margin-right: 8px;
+          margin-right: 12px;
+        }
+        .from-project:empty,
+        .due-date:empty,
+        .medium-priority:empty,
+        .high-priority:empty,
+        .note-presence:empty {
+          margin-right: 0;
         }
         span {
           img {
@@ -619,7 +627,7 @@ main {
         }
       }
 
-      .medium-priority:hover {
+      .onmouseover:hover {
         color: $medium-priority-color;
       }
 

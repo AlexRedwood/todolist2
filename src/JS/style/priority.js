@@ -1,37 +1,52 @@
 function starsChangeColors() {
-  activeFirstStar();
-  activeSecondStar();
-  activeThirdStar();
+  activateFirstStar();
+  activateSecondStar();
+  activateThirdStar();
 }
 
-function activeFirstStar() {
-  getStar1().addEventListener("click", function () {
-    outlineSecondStar();
-    removeColorFromAllStars();
-  });
+function activateFirstStar() {
+  getStar1().addEventListener("click", () => activateStar(1));
 }
 
-function activeSecondStar() {
-  getStar2().addEventListener("click", function () {
-    toggleSecondStar();
-    toggleColorOfTwoStars();
-  });
+function activateSecondStar() {
+  getStar2().addEventListener("click", () => activateStar(2));
 }
 
-function activeThirdStar() {
-  getStar3().addEventListener("click", function () {
-    toggleThirdStar();
-    toggleColorOfThreeStars();
-  });
+function activateThirdStar() {
+  getStar3().addEventListener("click", () => activateStar(3));
+}
+
+function activateStar(number) {
+  // Make a star with a certain number change its style
+  // Number can be 1, 2 or 3 because there are a total of 3 star
+  if (number < 1 || number > 3)
+    console.log(
+      `Can't activate star ${number} in activateStar(). Possible values: 1, 2, 3`
+    );
+  switch (number) {
+    case 1:
+      outlineSecondStar();
+      outlineThirdStar();
+      removeColorFromAllStars();
+      addMediumOnmouseover();
+      break;
+    case 2:
+      fillSecondStar();
+      addColorTwoStars();
+      outlineThirdStar();
+      decolorThirdStar();
+      addMediumOnmouseover();
+      break;
+    case 3:
+      fillSecondStar();
+      fillThirdStar();
+      addColorThreeStars();
+      removeMediumOnmouseover();
+      break;
+  }
 }
 
 // ------------------------------------SECOND STAR
-function toggleSecondStar() {
-  // if star is outlined fill it and the other way around
-  starIsOutlined(getStar2()) ? fillSecondStar() : outlineSecondStar();
-  // toggle a color of first two stars
-}
-
 function fillSecondStar() {
   // Get the child of the priority and make it filled star
   getStar2().children[0].setAttribute("name", "star");
@@ -42,11 +57,6 @@ function outlineSecondStar() {
   getStar2().children[0].setAttribute("name", "star-outline");
 }
 // ---------------------------------- THIRD STAR
-function toggleThirdStar() {
-  // if star is outlined fill it and the other way around
-  starIsOutlined(getStar3()) ? fillThirdStar() : outlineThirdStar();
-  // toggle a color of first two stars
-}
 
 function fillThirdStar() {
   // Get the child of the priority and make it filled star
@@ -60,20 +70,51 @@ function outlineThirdStar() {
 
 //---------------------------------- Helpers
 
+function removeMediumOnmouseover() {
+  // Second star has a class "onmouseover" with a hover effect
+  // When the 3rd star is chosen remove this hover effect from the 2nd star
+  getStar2().classList.remove("onmouseover");
+}
+
+function addMediumOnmouseover() {
+  // Second star has a class "onmouseover" with a hover effect
+  // When the 1st OR 2nd star is chosen add this hover effect to the 2nd star
+  getStar2().classList.add("onmouseover");
+}
+
 function starIsOutlined(star) {
   return star.children[0].getAttribute("name") === "star-outline";
 }
 
-function toggleColorOfTwoStars() {
-  getStar1().classList.toggle("selected-1");
-  getStar2().classList.toggle("selected-1");
+function addColorTwoStars() {
+  removeColorFromAllStars();
+  getStar1().classList.add("selected-1");
+  getStar2().classList.add("selected-1");
 }
-function toggleColorOfThreeStars() {}
+function addColorThreeStars() {
+  removeColorFromAllStars();
+  getStar1().classList.add("selected-2");
+  getStar2().classList.add("selected-2");
+  getStar3().classList.add("selected-2");
+}
 
 function removeColorFromAllStars() {
+  decolorFirstStar();
+  decolorSecondStar();
+  decolorThirdStar();
+}
+
+function decolorFirstStar() {
   getStar1().classList.remove("selected-1");
+  getStar1().classList.remove("selected-2");
+}
+function decolorSecondStar() {
   getStar2().classList.remove("selected-1");
+  getStar2().classList.remove("selected-2");
+}
+function decolorThirdStar() {
   getStar3().classList.remove("selected-1");
+  getStar3().classList.remove("selected-2");
 }
 
 function getStar1() {
@@ -88,4 +129,4 @@ function getStar3() {
   return document.getElementById("star-3");
 }
 
-export { starsChangeColors };
+export { starsChangeColors, activateStar };
