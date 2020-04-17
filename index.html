@@ -28,15 +28,19 @@
             <span class="project-icon">
               <ion-icon name="albums-outline"></ion-icon>
             </span>
-            <span class="project-name">All tasks</span>
-            <span class="count-todos">1</span>
+            <div class="project-title-count-container">
+              <span class="project-name">All tasks</span>
+              <span class="count-todos">1</span>
+            </div>
           </li>
           <li class="project">
             <span class="project-icon">
               <ion-icon name="reader-outline"></ion-icon>
             </span>
-            <span class="project-name">Project 1</span>
-            <span class="count-todos">2</span>
+            <div class="project-title-count-container">
+              <span class="project-name">Project 1</span>
+              <span class="count-todos">2</span>
+            </div>
             <button type="button" class="delete-project-btn">
               <ion-icon name="close-circle"></ion-icon>
             </button>
@@ -45,8 +49,10 @@
             <span class="project-icon">
               <ion-icon name="reader-outline"></ion-icon>
             </span>
-            <span class="project-name">Project 5 </span>
-            <span class="count-todos">23</span>
+            <div class="project-title-count-container">
+              <span class="project-name">Project 5 </span>
+              <span class="count-todos">232</span>
+            </div>
             <button type="button" class="delete-project-btn">
               <ion-icon name="close-circle"></ion-icon>
             </button>
@@ -55,8 +61,10 @@
             <span class="project-icon">
               <ion-icon name="reader-outline"></ion-icon>
             </span>
-            <span class="project-name">Learn English</span>
-            <span class="count-todos">11</span>
+            <div class="project-title-count-container">
+              <span class="project-name">Learn English</span>
+              <span class="count-todos">11</span>
+            </div>
             <button type="button" class="delete-project-btn">
               <ion-icon name="close-circle"></ion-icon>
             </button>
@@ -79,10 +87,10 @@
       </aside>
 
       <!--  MIDDLE -->
-      <main>
-        <div id="project-title">Project 1</div>
+      <main id="main">
+        <div id="project-title">All tasks</div>
         <ul id="todos">
-          <li class="todo">
+          <!-- <li class="todo">
             <label for="todocheckbox1">
               <div class="todo-icon-container">
                 <ion-icon name="checkmark-outline"></ion-icon>
@@ -92,7 +100,7 @@
             <div class="todo-text">
               <div class="todo-title">Learn stuff</div>
               <div class="details">
-                <span class="from-project"> From <i>Project 2</i> </span>
+                <span class="from-project"> From Project 2 </span>
                 <span class="due-date">
                   <img
                     src="assets/calendar.7504c889fc2d9d4f5400ba698b254377.svg"
@@ -105,7 +113,7 @@
                   <span>Medium priority</span>
                 </span>
                 <span class="note-presence">
-                  <img src="assets/edit.2927f8de4268bae8f11c4dfe3adc72b5.svg" alt="Calendar" width="12px" />
+                  <img src="assets/edit.2927f8de4268bae8f11c4dfe3adc72b5.svg" alt="Pen" width="12px" />
                   Note
                 </span>
               </div>
@@ -152,7 +160,7 @@
             <div class="todo-text">
               <div class="todo-title">Learn stuff</div>
               <div class="details">
-                <span class="from-project"> From <i>Project 2</i> </span>
+                <span class="from-project"> From Project 2 </span>
                 <span class="due-date"></span>
                 <span class="high-priority">High priority</span>
                 <span class="note-presence">
@@ -164,7 +172,7 @@
             <button type="button" class="delete-todo-btn">
               <ion-icon name="close-circle"></ion-icon>
             </button>
-          </li>
+          </li> -->
         </ul>
 
         <!-- USER INPUT MIDDLE -->
@@ -185,50 +193,56 @@
 
       <!--  RIGHT SIDE OF THE PAGE -->
       <aside id="todo-misc-container">
-        <div id="todo-name-changer-container">
-          <textarea
-            class="todo-name-changer"
-            maxlength="200"
-            placeholder="New name"
-            autocomplete="off"
-          ></textarea>
-        </div>
-
-        <div id="date-changer">
-          <div class="misc-title">Date</div>
-          <label for="date" id="date-label">
-            <input id="date" type="date" readonly="readonly" />
-            <span id="date-remover">
-              <ion-icon name="close-outline"></ion-icon>
-            </span>
-          </label>
-        </div>
-
-        <div id="priority-container">
-          <div class="misc-title">Priority</div>
-          <div id="priority-levels">
-            <span class="low-priority default">
-              <ion-icon name="star-outline"></ion-icon>
-            </span>
-            <span class="medium-priority">
-              <ion-icon name="star-outline"></ion-icon>
-            </span>
-            <span class="high-priority">
-              <ion-icon name="star-outline"></ion-icon>
-            </span>
+        <div id="details-container">
+          <div id="todo-name-changer-container">
+            <textarea
+              id="todo-name-changer"
+              maxlength="200"
+              placeholder="New name"
+              autocomplete="off"
+            ></textarea>
           </div>
-        </div>
 
-        <div id="note-container">
-          <textarea
-            class="note-changer"
-            maxlength="200"
-            placeholder="Leave a note"
-            autocomplete="off"
-          ></textarea>
+          <div id="date-changer">
+            <div class="misc-title">Date</div>
+            <label for="date" id="date-label">
+              <input id="date" type="date" />
+              <!-- <span id="date-remover">
+                <ion-icon name="close-outline"></ion-icon>
+              </span> -->
+            </label>
+          </div>
+
+          <div id="priority-container">
+            <div class="misc-title">Priority</div>
+            <div id="priority-levels">
+              <span class="low-priority" id="star-1">
+                <ion-icon name="star"></ion-icon>
+              </span>
+              <span class="medium-priority onmouseover" id="star-2">
+                <ion-icon name="star-outline"></ion-icon>
+              </span>
+              <span class="high-priority" id="star-3">
+                <ion-icon name="star-outline"></ion-icon>
+              </span>
+            </div>
+          </div>
+
+          <div id="note-container">
+            <textarea
+              id="note-changer"
+              maxlength="200"
+              placeholder="Leave a note"
+              autocomplete="off"
+            ></textarea>
+          </div>
+
+          <div id="close-details-btn">
+            <ion-icon name="chevron-forward-outline"></ion-icon>
+          </div>
         </div>
       </aside>
     </div>
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
-  <script type="text/javascript" src="bundle.ace29f025b184f9c265d.js"></script></body>
+  <script type="text/javascript" src="bundle.6c082dc0ba6247536015.js"></script></body>
 </html>
