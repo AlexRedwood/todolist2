@@ -381,6 +381,19 @@ main {
             animation: fadeIn 0.5s ease-out;
           }
         }
+
+        &.completed {
+          &:hover {
+            &::after {
+              border: 2px solid$project-delete-btn-color !important;
+            }
+          }
+          ion-icon {
+            visibility: visible !important;
+            color: $project-delete-btn-color;
+            animation: none;
+          }
+        }
       }
     }
 
@@ -394,6 +407,16 @@ main {
       display: flex;
       flex-direction: column;
       justify-content: space-around;
+
+      &.done {
+        text-decoration: line-through;
+        color: $project-delete-btn-color !important;
+
+        .medium-priority,
+        .high-priority {
+          color: $project-delete-btn-color !important;
+        }
+      }
 
       .todo-title {
         font-size: 1.15em;
@@ -555,9 +578,6 @@ main {
   flex-direction: column;
   margin-top: 20px;
   z-index: 1;
-
-  #details-container {
-  }
 
   @media screen and (max-width: 1024px) {
     -webkit-box-shadow: -3px 0px 5px -2px $shadows-color;

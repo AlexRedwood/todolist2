@@ -2,6 +2,7 @@ import Calendar from "../../ICONS/calendar.svg";
 import Note from "../../ICONS/edit.svg";
 import * as DeleteTaskBtns from "./delete.js";
 import * as DetailsToggle from "./detailsToggle.js";
+import * as TaskDone from "./done.js";
 
 function renderAllTasksFrom(arr) {
   // Clear all previously rendered elements from the page
@@ -14,6 +15,10 @@ function renderAllTasksFrom(arr) {
   DeleteTaskBtns.deleteTasksFrom(arr);
   // Make each task show its details on click
   DetailsToggle.tasksToggleDetails(arr);
+  // Make each task checkbox complete task by changing its class
+  TaskDone.doneBtns(arr);
+  // Reach labels and make them change themselves when the task is done
+  toggleDoneIcons();
 }
 
 function clearContentOf(id) {
@@ -38,7 +43,14 @@ function createTask(i, task) {
   li.append(createLabel(i));
   li.append(createInput(i));
   li.append(
-    createContent(task.title, task.from, task.date, task.priority, task.note)
+    createContent(
+      task.title,
+      task.from,
+      task.date,
+      task.priority,
+      task.note,
+      task.done
+    )
   );
   li.append(createDeleteBtn(i));
 
@@ -50,6 +62,7 @@ function createTask(i, task) {
 function createLabel(i) {
   // returns label for "todocheckbox" + i
   let label = document.createElement("label");
+  label.setAttribute("id", `label-${i}`);
   label.htmlFor = `todocheckbox${i}`;
   label.append(createDoneIcon());
   return label;
@@ -74,20 +87,20 @@ function createInput(i) {
   let checkbox = document.createElement("input");
   // Add attributes
   checkbox.setAttribute("type", "checkbox");
-  checkbox.setAttribute("class", "todo-checkbox");
+  checkbox.setAttribute("class", `todo-checkbox`);
   checkbox.setAttribute("id", `todocheckbox-${i}`);
   return checkbox;
 }
 
 // CONTENT = task title and details
 
-function createContent(title, from, date, priority, note) {
+function createContent(title, from, date, priority, note, done) {
   let content = document.createElement("div");
   content.setAttribute("class", "todo-text");
   // Append title and details to content
   content.appendChild(createTitle(title));
   content.appendChild(createDetails(from, date, priority, note));
-
+  if (done) content.classList.add("done");
   return content;
 }
 
@@ -105,6 +118,7 @@ function createDetails(from, date, priority, note) {
   details.appendChild(createDue(date));
   details.appendChild(createPriority(priority));
   details.appendChild(createNote(note));
+
   return details;
 }
 
@@ -193,6 +207,19 @@ function createDeleteBtn(i) {
   btn.appendChild(icon);
 
   return btn;
+}
+
+function toggleDoneIcons() {
+  // Get collection of all tasks wich are completed
+  let dones = document.getElementsByClassName("done");
+  // For each completed task take label and toggle a class on it
+  for (let task of dones) {
+    let number = task.parentElement.id.split("-")[1];
+    let label = document.getElementById(`label-${number}`);
+    let iconContainer = label.firstChild;
+
+    iconContainer.classList.add("completed");
+  }
 }
 
 export { renderAllTasksFrom };
