@@ -413,7 +413,9 @@ main {
         color: $project-delete-btn-color !important;
 
         .medium-priority,
-        .high-priority {
+        .high-priority,
+        .due-date,
+        .overdue-date {
           color: $project-delete-btn-color !important;
         }
       }

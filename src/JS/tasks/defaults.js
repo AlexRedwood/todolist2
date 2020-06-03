@@ -6,7 +6,7 @@ function get() {
     taskFactory({
       title: "Learn stuff",
       from: "Project 2",
-      date: "15.03.2020",
+      date: "15.03.2025",
       priority: "medium",
       note: "something",
     }),

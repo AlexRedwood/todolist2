@@ -131,12 +131,30 @@ function createFrom(from) {
 
 function createDue(date) {
   let due = document.createElement("span");
+
   due.setAttribute("class", "due-date");
   if (date) {
+    // If task has date before today, it will be red colored
+    if (dateOverdue(date)) due.classList.add("overdue-date");
+
     due.appendChild(createCalendarImage());
     due.appendChild(createSpanForDate(date));
   }
   return due;
+}
+
+function dateOverdue(date) {
+  // Function to compare dates: today with a date
+  // If date is earlier than today then return true
+  let today = new Date();
+
+  let day = date.split(".")[0];
+  let month = date.split(".")[1];
+  let year = date.split(".")[2];
+
+  let taskDate = new Date(`${year}-${month}-${day} 0:00:00`);
+
+  return taskDate < today ? true : false;
 }
 
 function createCalendarImage() {
@@ -212,7 +230,7 @@ function createDeleteBtn(i) {
 function toggleDoneIcons() {
   // Get collection of all tasks wich are completed
   let dones = document.getElementsByClassName("done");
-  // For each completed task take label and toggle a class on it
+  // For each completed task take label and toggle a class "completed" on it
   for (let task of dones) {
     let number = task.parentElement.id.split("-")[1];
     let label = document.getElementById(`label-${number}`);
