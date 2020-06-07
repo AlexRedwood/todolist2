@@ -240,4 +240,4 @@ function toggleDoneIcons() {
   }
 }
 
-export { renderAllTasksFrom };
+export { renderAllTasksFrom, clearContentOf };

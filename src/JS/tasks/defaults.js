@@ -1,6 +1,6 @@
 import { taskFactory } from "./factory.js";
 
-function getTasksByNumber(number) {
+function getTasksByNumber(number = 1) {
   // This function simply creates an array with default tasks in it
   // Number is just a number of bundle from 1 to 3
   let bundle1 = [
