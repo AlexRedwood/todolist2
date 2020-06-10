@@ -1,9 +1,5 @@
-const projectFactory = function ({
-  title = "",
-  tasks = [],
-  count = tasks.length,
-}) {
-  return { title, tasks, count };
+const projectFactory = function ({ title = "", tasks = [], isActive = false }) {
+  return { title, tasks, isActive };
 };
 
 export { projectFactory };

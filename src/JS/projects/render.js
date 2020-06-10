@@ -1,23 +1,24 @@
 import { renderAllTasksFrom, clearContentOf } from "../tasks/render.js";
-import * as Input from "../tasks/detailsInput.js";
-import * as AddTaskBtn from "../tasks/add.js";
+import { projectsShowTasks } from "./toggle.js";
 
-function renderAllProjects(arr, number) {
+function initialRender(arr) {
+  refreshProjects(arr, 0);
+}
+
+function refreshProjects(arr, number) {
   // Clear all previously rendered elements from the page
   clearContentOf("project-list");
+  renderAllProjects(arr, number);
+  projectsShowTasks(arr);
+}
+
+function renderAllProjects(arr, number) {
   //Render each element of the array to the page
   for (let [index, item] of arr.entries()) {
     renderProject(index, item);
   }
   // Render all tasks from project
   renderAllTasksFrom(arr[number].tasks);
-
-  // Button to add task to a defined array
-  // Also rerender the array after adding a task
-  AddTaskBtn.addTaskTo(arr[number].tasks);
-
-  // Change tasks when user type something to details window
-  Input.changeTaskOnInput(arr[number].tasks);
 }
 
 function renderProject(i, project) {
@@ -28,10 +29,11 @@ function createProject(i, project) {
   // create a li element
   let li = document.createElement("li");
   li.setAttribute("class", "project");
+  if (project.isActive) li.classList.add("active");
   li.setAttribute("id", `project-${i}`);
   // append everything to it
   li.append(createIcon());
-  li.append(createTitleAndCount(project.title, project.count));
+  li.append(createTitleAndCount(project.title, project.tasks.length));
   li.append(createDeleteBtn(i));
   return li;
 }
@@ -81,4 +83,4 @@ function createDeleteBtn(i) {
   return btn;
 }
 
-export { renderAllProjects };
+export { refreshProjects, initialRender };

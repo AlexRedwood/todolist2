@@ -1,20 +1,21 @@
 import { taskFactory } from "./factory.js";
-import { renderAllTasksFrom } from "./render.js";
+import { refreshProjects } from "../projects/render.js";
 
-function addTaskTo(arr) {
+function addTaskTo(arr, number) {
   const submitTodoBtn = document.getElementById("submit-todo");
 
-  submitTodoBtn.addEventListener("click", function (event) {
-    // Prevent default submit behavior
-    event.preventDefault();
-    // Get task name from User and add it to tasks array
-    pushTaskTo(arr);
-    console.table(arr);
-    // Rerender array
-    renderAllTasksFrom(arr);
+  submitTodoBtn.addEventListener("click", () => addTask(arr, number));
+}
 
-    return arr;
-  });
+function addTask(arr, number) {
+  // Prevent default submit behavior
+  event.preventDefault();
+  // Get task name from User and add it to tasks array
+  pushTaskTo(arr[number].tasks);
+  console.table(arr[number].tasks);
+  // Rerender array
+  refreshProjects(arr, number);
+  return arr;
 }
 
 function pushTaskTo(arr) {

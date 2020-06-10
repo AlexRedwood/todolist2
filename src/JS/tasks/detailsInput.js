@@ -10,12 +10,12 @@ function putTaskInfoToInput(task) {
   setNote(task.note);
 }
 
-function changeTaskOnInput(arr) {
+function changeTaskOnInput(projects, number) {
   // Change a task with input from Details Window
-  changeTitleOnInput(arr);
-  changeDateOnInput(arr);
-  changePriorityOnInput(arr);
-  changeNoteOnInput(arr);
+  changeTitleOnInput(projects[number].tasks);
+  changeDateOnInput(projects[number].tasks);
+  changePriorityOnInput(projects[number].tasks);
+  changeNoteOnInput(projects[number].tasks);
 }
 
 function changeTitleOnInput(arr) {

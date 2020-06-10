@@ -7,6 +7,7 @@ function getProjects() {
     projectFactory({
       title: "Project 1",
       tasks: DefaultTasks.getTasksByNumber(1),
+      count: DefaultTasks.getTasksByNumber(1).length,
     }),
     projectFactory({
       title: "Project 2",
