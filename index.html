@@ -24,7 +24,7 @@
       <!--  LEFT SIDE OF THE PAGE -->
       <aside id="project-container">
         <ul id="project-list">
-          <li class="project active">
+          <li class="project active" id="all-tasks">
             <span class="project-icon">
               <ion-icon name="albums-outline"></ion-icon>
             </span>
@@ -33,7 +33,7 @@
               <span class="count-todos">1</span>
             </div>
           </li>
-          <li class="project">
+          <!--           <li class="project">
             <span class="project-icon">
               <ion-icon name="reader-outline"></ion-icon>
             </span>
@@ -56,7 +56,7 @@
             <button type="button" class="delete-project-btn">
               <ion-icon name="close-circle"></ion-icon>
             </button>
-          </li>
+          </li> 
           <li class="project">
             <span class="project-icon">
               <ion-icon name="reader-outline"></ion-icon>
@@ -69,21 +69,22 @@
               <ion-icon name="close-circle"></ion-icon>
             </button>
           </li>
-
-          <!--  USER INPUT LEFTSIDE -->
-          <form id="new-project-form">
-            <input
-              id="new-project"
-              type="text"
-              placeholder="New project"
-              autocomplete="off"
-            />
-            <label for="new-project" class="new-project-label"></label>
-            <button id="submit-project" type="submit">
-              <ion-icon name="add-outline"></ion-icon>
-            </button>
-          </form>
+          -->
         </ul>
+
+        <!--  USER INPUT LEFTSIDE -->
+        <form id="new-project-form">
+          <input
+            id="new-project"
+            type="text"
+            placeholder="New project"
+            autocomplete="off"
+          />
+          <label for="new-project" class="new-project-label"></label>
+          <button id="submit-project" type="submit">
+            <ion-icon name="add-outline"></ion-icon>
+          </button>
+        </form>
       </aside>
 
       <!--  MIDDLE -->
@@ -184,7 +185,7 @@
             type="text"
             placeholder="New task"
             autocomplete="off"
-            maxlength="35"
+            maxlength="250"
           />
           <button id="submit-todo" type="submit" value="Add new task">
             <ion-icon name="add-outline"></ion-icon>
@@ -245,5 +246,5 @@
       </aside>
     </div>
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
-  <script type="text/javascript" src="bundle.249ba7ba02a7b84322f3.js"></script></body>
+  <script type="text/javascript" src="bundle.4ec4a10af09078538c44.js"></script></body>
 </html>
