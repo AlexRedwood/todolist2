@@ -1,20 +1,22 @@
 import { taskFactory } from "./factory.js";
 import { refreshProjects } from "../projects/render.js";
 
-function addTaskTo(arr, number) {
+function addTaskTo(arr) {
   const submitTodoBtn = document.getElementById("submit-todo");
 
-  submitTodoBtn.addEventListener("click", () => addTask(arr, number));
+  submitTodoBtn.addEventListener("click", () => addTask(arr));
 }
 
-function addTask(arr, number) {
+function addTask(arr) {
   // Prevent default submit behavior
   event.preventDefault();
-  // Get task name from User and add it to tasks array
-  pushTaskTo(arr[number].tasks);
-  console.table(arr[number].tasks);
+  // Loop to get active project
+  for (let project of arr) {
+    if (project.isActive) pushTaskTo(project.tasks);
+  }
+
   // Rerender array
-  refreshProjects(arr, number);
+  refreshProjects(arr);
   return arr;
 }
 

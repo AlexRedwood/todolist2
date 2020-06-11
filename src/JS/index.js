@@ -5,7 +5,6 @@ import * as Priority from "./style/priority.js";
 import * as DefaultProjects from "./projects/defaults.js";
 import { initialRender } from "./projects/render.js";
 import * as AddTaskBtn from "./tasks/add.js";
-import * as Details from "./tasks/detailsInput.js";
 
 // Style
 MenuBtn.showProjects();
@@ -22,10 +21,7 @@ initialRender(projects);
 
 // Button to add task to a defined array
 // Also rerender the array after adding a task
-AddTaskBtn.addTaskTo(projects, 0);
-
-// Change tasks when user type something to details window
-Details.changeTaskOnInput(projects, 0);
+AddTaskBtn.addTaskTo(projects);
 
 //test button
 let testBtn = document.getElementById("socials");

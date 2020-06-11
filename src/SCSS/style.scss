@@ -113,6 +113,9 @@ header {
       &.active {
         color: $project-active-font-color;
         font-weight: 900;
+        &:hover .delete-project-btn {
+          background: $project-container-bg-color;
+        }
       }
 
       &:hover .delete-project-btn {

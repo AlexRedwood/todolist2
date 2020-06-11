@@ -10,12 +10,19 @@ function putTaskInfoToInput(task) {
   setNote(task.note);
 }
 
-function changeTaskOnInput(projects, number) {
+function changeTaskOnInput(arr) {
+  // Find active project and then open them details on tasks
+  for (let project of arr) {
+    if (project.isActive) changeContentOnInput(project);
+  }
+}
+
+function changeContentOnInput(project) {
   // Change a task with input from Details Window
-  changeTitleOnInput(projects[number].tasks);
-  changeDateOnInput(projects[number].tasks);
-  changePriorityOnInput(projects[number].tasks);
-  changeNoteOnInput(projects[number].tasks);
+  changeTitleOnInput(project.tasks);
+  changeDateOnInput(project.tasks);
+  changePriorityOnInput(project.tasks);
+  changeNoteOnInput(project.tasks);
 }
 
 function changeTitleOnInput(arr) {

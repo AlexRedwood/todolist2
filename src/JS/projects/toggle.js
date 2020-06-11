@@ -1,4 +1,5 @@
 import { refreshProjects } from "./render.js";
+import { hideDetails } from "../tasks/detailsToggle.js";
 
 function projectsShowTasks(arr) {
   // Make projects on the page show their tasks onclick
@@ -12,9 +13,10 @@ function projectsShowTasks(arr) {
       let number = projectId.split("-")[1];
       // Activate one project and deactivate others
       activateProject(arr, number);
-
       // Refresh projects
       refreshProjects(arr, number);
+      // Close the details on task if it's open
+      hideDetails();
     });
   }
 }

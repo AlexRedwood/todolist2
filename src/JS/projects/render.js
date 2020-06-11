@@ -1,24 +1,27 @@
 import { renderAllTasksFrom, clearContentOf } from "../tasks/render.js";
 import { projectsShowTasks } from "./toggle.js";
+import * as Details from "../tasks/detailsInput.js";
 
 function initialRender(arr) {
-  refreshProjects(arr, 0);
+  refreshProjects(arr);
 }
 
-function refreshProjects(arr, number) {
+function refreshProjects(arr) {
   // Clear all previously rendered elements from the page
   clearContentOf("project-list");
-  renderAllProjects(arr, number);
+  renderAllProjects(arr);
   projectsShowTasks(arr);
+  // Change tasks when user type something to details window
+  Details.changeTaskOnInput(arr);
 }
 
-function renderAllProjects(arr, number) {
+function renderAllProjects(arr) {
   //Render each element of the array to the page
   for (let [index, item] of arr.entries()) {
     renderProject(index, item);
+    // If project is active then render its tasks
+    if (item.isActive) renderAllTasksFrom(item.tasks);
   }
-  // Render all tasks from project
-  renderAllTasksFrom(arr[number].tasks);
 }
 
 function renderProject(i, project) {
