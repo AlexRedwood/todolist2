@@ -117,4 +117,5 @@ export {
   getDetailsContainerIdNumber,
   hideDetails,
   detailsAreShown,
+  setDetailsIdTo,
 };

@@ -1,6 +1,6 @@
 import * as DetailsToggle from "./detailsToggle.js";
 import { activateStar } from "../style/priority.js";
-import { renderAllTasksFrom } from "./render.js";
+import { refreshProjects } from "../projects/render.js";
 
 function putTaskInfoToInput(task) {
   // Function to put info from tasks in inputs when details are shown
@@ -10,19 +10,27 @@ function putTaskInfoToInput(task) {
   setNote(task.note);
 }
 
-function changeTaskOnInput(arr) {
-  // Find active project and then open them details on tasks
+function getActiveProject(arr) {
+  // Find active project and return it
   for (let project of arr) {
-    if (project.isActive) changeContentOnInput(project);
+    if (project.isActive) return project;
   }
 }
 
-function changeContentOnInput(project) {
+function getTask(projects) {
+  // get number of task from details
+  let taskNumber = DetailsToggle.getDetailsContainerIdNumber();
+  // get task with the same number as details window
+  let task = getActiveProject(projects).tasks[taskNumber];
+  return task;
+}
+
+function changeTaskOnInput(projects) {
   // Change a task with input from Details Window
-  changeTitleOnInput(project.tasks);
-  changeDateOnInput(project.tasks);
-  changePriorityOnInput(project.tasks);
-  changeNoteOnInput(project.tasks);
+  changeTitleOnInput(projects);
+  changeDateOnInput(projects);
+  changePriorityOnInput(projects);
+  changeNoteOnInput(projects);
 }
 
 function changeTitleOnInput(arr) {
@@ -32,15 +40,12 @@ function changeTitleOnInput(arr) {
 }
 
 function changeTitle(arr) {
-  // get number of task from details
-  let taskNumber = DetailsToggle.getDetailsContainerIdNumber();
-  // Use this number to get to task.title in array
-  let task = arr[taskNumber];
+  let task = getTask(arr);
   let input = document.getElementById("todo-name-changer");
   // Task title is now user input value
   task.title = input.value;
   // rerender to see the changes
-  renderAllTasksFrom(arr);
+  refreshProjects(arr);
 }
 
 function changeDateOnInput(arr) {
@@ -50,15 +55,12 @@ function changeDateOnInput(arr) {
 }
 
 function changeDate(arr) {
-  // get number of task from details
-  let taskNumber = DetailsToggle.getDetailsContainerIdNumber();
-  // Use this number to get to task.date in array
-  let task = arr[taskNumber];
+  let task = getTask(arr);
   let input = document.getElementById("date");
   // Task date is now formatted date input value
   task.date = formatDate2(input.value);
   // rerender to see the changes
-  renderAllTasksFrom(arr);
+  refreshProjects(arr);
 }
 
 function changePriorityOnInput(arr) {
@@ -74,15 +76,12 @@ function changePriorityOnInput(arr) {
 }
 
 function changePriority(arr) {
-  // get number of task from details
-  let taskNumber = DetailsToggle.getDetailsContainerIdNumber();
-  // Use this number to get to task.date in array
-  let task = arr[taskNumber];
+  let task = getTask(arr);
   let input = getPriorityInput();
   // Task date is now formatted date input value
   task.priority = input;
   // rerender to see the changes
-  renderAllTasksFrom(arr);
+  refreshProjects(arr);
 }
 
 function getPriorityInput() {
@@ -104,15 +103,12 @@ function changeNoteOnInput(arr) {
 }
 
 function changeNote(arr) {
-  // get number of task from details
-  let taskNumber = DetailsToggle.getDetailsContainerIdNumber();
-  // Use this number to get to task.note in array
-  let task = arr[taskNumber];
+  let task = getTask(arr);
   let input = document.getElementById("note-changer");
   // Task Note is now formatted Note input value
   task.note = input.value;
   // rerender to see the changes
-  renderAllTasksFrom(arr);
+  refreshProjects(arr);
 }
 
 // ---------------------------------------------------

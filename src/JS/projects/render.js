@@ -1,6 +1,7 @@
 import { renderAllTasksFrom, clearContentOf } from "../tasks/render.js";
 import { projectsShowTasks } from "./toggle.js";
 import * as Details from "../tasks/detailsInput.js";
+import * as DeleteTaskBtns from "../tasks/delete.js";
 
 function initialRender(arr) {
   refreshProjects(arr);
@@ -13,6 +14,8 @@ function refreshProjects(arr) {
   projectsShowTasks(arr);
   // Change tasks when user type something to details window
   Details.changeTaskOnInput(arr);
+  // Make delete tasks buttons delete tasks from projects
+  DeleteTaskBtns.deleteTasksFrom(arr);
 }
 
 function renderAllProjects(arr) {

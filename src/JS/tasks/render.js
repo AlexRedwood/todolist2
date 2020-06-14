@@ -1,6 +1,5 @@
 import Calendar from "../../ICONS/calendar.svg";
 import Note from "../../ICONS/edit.svg";
-import * as DeleteTaskBtns from "./delete.js";
 import * as DetailsToggle from "./detailsToggle.js";
 import * as TaskDone from "./done.js";
 
@@ -12,7 +11,7 @@ function renderAllTasksFrom(arr) {
     renderTask(index, item);
   }
   // Make delete buttons on click remove task to which they are assigned
-  DeleteTaskBtns.deleteTasksFrom(arr);
+  //DeleteTaskBtns.deleteTasksFrom(arr);
   // Make each task show its details on click
   DetailsToggle.tasksToggleDetails(arr);
   // Make each task checkbox complete task by changing its class
