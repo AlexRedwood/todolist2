@@ -1,5 +1,6 @@
-import { renderAllTasksFrom } from "./render.js";
 import * as DetailsToggle from "./detailsToggle.js";
+import { refreshOnlyTasksFrom } from "../projects/render.js";
+import { getActiveProject } from "./detailsInput.js";
 
 function doneBtns(arr) {
   // Take the collection of all checkboxes from tasks by class name
@@ -21,9 +22,11 @@ function doneBtnCompleteTask(checkbox, arr) {
     // Before completing an item make sure to close its details
     closeDetailsOfCompletedTask(number);
     // If task is done then undone it, else complete it
-    arr[number].done = !arr[number].done;
+    getActiveProject(arr).tasks[number].done = !getActiveProject(arr).tasks[
+      number
+    ].done;
     // Rerender array
-    renderAllTasksFrom(arr);
+    refreshOnlyTasksFrom(arr);
     // Avoid firing parent element listener after clicking on the checkbox
     e.stopPropagation();
   });

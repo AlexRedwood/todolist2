@@ -2,20 +2,55 @@ import { renderAllTasksFrom, clearContentOf } from "../tasks/render.js";
 import { projectsShowTasks } from "./toggle.js";
 import * as Details from "../tasks/detailsInput.js";
 import * as DeleteTaskBtns from "../tasks/delete.js";
+import * as TaskDone from "../tasks/done.js";
+import * as DeleteProjectBtns from "./delete.js";
+import { getActiveProject } from "../tasks/detailsInput.js";
+import * as LocalStorage from "./localstorage.js";
 
 function initialRender(arr) {
   refreshProjects(arr);
 }
 
-function refreshProjects(arr) {
+function refreshProjects(projects) {
+  // Show the name of the active project
+  showActiveProjectTitle(projects);
   // Clear all previously rendered elements from the page
   clearContentOf("project-list");
-  renderAllProjects(arr);
-  projectsShowTasks(arr);
+  renderAllProjects(projects);
+  // each project shows its tasks
+  projectsShowTasks(projects);
+  // delete btns can delete projects
+  DeleteProjectBtns.deleteProjectFrom(projects);
+  // Turn on all of the interactiveness of the tasks
+  turnOnTasksInteraction(projects);
+  // Save the projects to localStorage
+  LocalStorage.save(projects);
+}
+
+function refreshOnlyTasksFrom(projects) {
+  for (let project of projects) {
+    // If project is active then render its tasks
+    if (project.isActive) renderAllTasksFrom(project.tasks);
+  }
+  turnOnTasksInteraction(projects);
+}
+
+function turnOnTasksInteraction(projects) {
   // Change tasks when user type something to details window
-  Details.changeTaskOnInput(arr);
+  Details.changeTaskOnInput(projects);
   // Make delete tasks buttons delete tasks from projects
-  DeleteTaskBtns.deleteTasksFrom(arr);
+  DeleteTaskBtns.deleteTasksFrom(projects);
+  // make done buttonst complete tasks
+  TaskDone.doneBtns(projects);
+}
+
+function showActiveProjectTitle(projects) {
+  let projectTitle = document.getElementById("project-title");
+  if (projects.length > 0) {
+    projectTitle.textContent = getActiveProject(projects).title;
+  } else {
+    projectTitle.textContent = "";
+  }
 }
 
 function renderAllProjects(arr) {
@@ -89,4 +124,4 @@ function createDeleteBtn(i) {
   return btn;
 }
 
-export { refreshProjects, initialRender };
+export { refreshProjects, initialRender, refreshOnlyTasksFrom };

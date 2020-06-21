@@ -33,4 +33,4 @@ function deactivateAllProjects(arr) {
   }
 }
 
-export { projectsShowTasks };
+export { projectsShowTasks, activateProject };

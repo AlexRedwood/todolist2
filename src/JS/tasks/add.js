@@ -17,7 +17,6 @@ function addTask(arr) {
 
   // Rerender array
   refreshProjects(arr);
-  return arr;
 }
 
 function pushTaskTo(arr) {

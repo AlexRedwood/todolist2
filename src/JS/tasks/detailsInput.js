@@ -1,6 +1,6 @@
 import * as DetailsToggle from "./detailsToggle.js";
 import { activateStar } from "../style/priority.js";
-import { refreshProjects } from "../projects/render.js";
+import { refreshOnlyTasksFrom } from "../projects/render.js";
 
 function putTaskInfoToInput(task) {
   // Function to put info from tasks in inputs when details are shown
@@ -45,7 +45,7 @@ function changeTitle(arr) {
   // Task title is now user input value
   task.title = input.value;
   // rerender to see the changes
-  refreshProjects(arr);
+  refreshOnlyTasksFrom(arr);
 }
 
 function changeDateOnInput(arr) {
@@ -60,7 +60,7 @@ function changeDate(arr) {
   // Task date is now formatted date input value
   task.date = formatDate2(input.value);
   // rerender to see the changes
-  refreshProjects(arr);
+  refreshOnlyTasksFrom(arr);
 }
 
 function changePriorityOnInput(arr) {
@@ -81,7 +81,7 @@ function changePriority(arr) {
   // Task date is now formatted date input value
   task.priority = input;
   // rerender to see the changes
-  refreshProjects(arr);
+  refreshOnlyTasksFrom(arr);
 }
 
 function getPriorityInput() {
@@ -108,7 +108,7 @@ function changeNote(arr) {
   // Task Note is now formatted Note input value
   task.note = input.value;
   // rerender to see the changes
-  refreshProjects(arr);
+  refreshOnlyTasksFrom(arr);
 }
 
 // ---------------------------------------------------
@@ -161,4 +161,4 @@ function formatDate2(date) {
   return formatted;
 }
 
-export { putTaskInfoToInput, changeTaskOnInput };
+export { putTaskInfoToInput, changeTaskOnInput, getActiveProject };

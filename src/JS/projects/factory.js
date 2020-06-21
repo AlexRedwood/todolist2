@@ -3,3 +3,4 @@ const projectFactory = function ({ title = "", tasks = [], isActive = false }) {
 };
 
 export { projectFactory };
+``;
