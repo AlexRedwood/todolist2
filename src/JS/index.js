@@ -15,7 +15,9 @@ Priority.starsChangeColors();
 
 // App logic
 
-//create main list of projects
+// Take projects from local storage if exists
+// If not create default projects
+
 let projects = LocalStorage.get() || [...DefaultProjects.getProjects()];
 
 //render first project
@@ -24,9 +26,4 @@ initialRender(projects);
 // Buttons which can add a task or a project to a defined array
 // Also rerender the array after adding a task
 AddTaskBtn.addTaskTo(projects);
-
 AddProjectBtn.addProjectTo(projects);
-
-//test button
-let testBtn = document.getElementById("socials");
-testBtn.addEventListener("click", () => console.table(projects));

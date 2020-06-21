@@ -6,12 +6,15 @@ import * as TaskDone from "../tasks/done.js";
 import * as DeleteProjectBtns from "./delete.js";
 import { getActiveProject } from "../tasks/detailsInput.js";
 import * as LocalStorage from "./localstorage.js";
+import * as Menu from "../style/menu.js";
 
 function initialRender(arr) {
   refreshProjects(arr);
 }
 
 function refreshProjects(projects) {
+  // If projects are minimized, broaden them
+  broadIfMinimized();
   // Show the name of the active project
   showActiveProjectTitle(projects);
   // Clear all previously rendered elements from the page
@@ -33,6 +36,12 @@ function refreshOnlyTasksFrom(projects) {
     if (project.isActive) renderAllTasksFrom(project.tasks);
   }
   turnOnTasksInteraction(projects);
+}
+
+function broadIfMinimized() {
+  let content = document.getElementById("content");
+  let isNarrow = content.classList.contains("narrow");
+  if (isNarrow) Menu.narrowProjectContainer();
 }
 
 function turnOnTasksInteraction(projects) {

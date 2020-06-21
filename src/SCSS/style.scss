@@ -29,7 +29,7 @@ body {
     "header header header"
     "projects main todo-misc";
 
-  &.broad {
+  &.narrow {
     grid-template-columns: 68px auto 330px;
   }
 }
@@ -70,6 +70,20 @@ header {
     margin-right: 10px;
     font-size: 48px;
     cursor: pointer;
+
+    & a {
+      display: block;
+      height: 48px;
+      transition: 0.4s;
+      border: 1px solid transparent;
+      border-radius: 5px;
+      &:link {
+        color: $header-font-color;
+      }
+      &:visited {
+        color: $header-font-color;
+      }
+    }
   }
 }
 
@@ -89,7 +103,7 @@ header {
     width: 280px;
     max-width: 280px;
 
-    &.broad {
+    &.narrow {
       width: 68px;
     }
 
@@ -104,7 +118,7 @@ header {
       white-space: normal;
       overflow: hidden;
 
-      &.broad {
+      &.narrow {
         margin: 10px 0;
         padding: 10px 10px 10px 22px;
         border-radius: 0;
@@ -133,7 +147,7 @@ header {
         font-size: 24px;
         margin-right: 20px;
 
-        &.broad {
+        &.narrow {
           margin-right: 0;
         }
       }
@@ -143,7 +157,7 @@ header {
         align-items: center;
         justify-content: flex-start;
 
-        &.broad {
+        &.narrow {
           display: none;
         }
       }
@@ -176,7 +190,7 @@ header {
         cursor: pointer;
         transition: color 0.2s;
 
-        &.broad {
+        &.narrow {
           display: none;
         }
 
@@ -199,7 +213,7 @@ header {
     margin-right: 0;
     display: flex;
 
-    &.broad {
+    &.narrow {
       width: 68px;
       margin: 0;
     }
@@ -217,7 +231,7 @@ header {
       background: transparent;
       font-family: "Sen", sans-serif;
 
-      &.broad {
+      &.narrow {
         display: none;
       }
 
@@ -238,14 +252,14 @@ header {
       border: none;
       position: relative;
       top: 0px;
-      left: 10px;
+      left: 2px;
       text-decoration: none;
       font-size: 24px;
       cursor: pointer;
       text-align: center;
       padding: 6px;
 
-      &.broad {
+      &.narrow {
         padding: 0;
         left: 4px;
         padding: 7px 18px;

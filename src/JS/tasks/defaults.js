@@ -5,56 +5,30 @@ function getTasksByNumber(number = 1) {
   // Number is just a number of bundle from 1 to 3
   let bundle1 = [
     taskFactory({
-      title: "Learn english",
+      title: "Example 1",
       date: "15.03.2025",
       priority: "medium",
       note: "something",
     }),
     taskFactory({
-      title: "Learn english again",
-      date: "15.03.2028",
-      priority: "medium",
+      title: "Example 2",
+      date: "15.03.2000",
     }),
     taskFactory({
-      title: "And Again!",
-      priority: "medium",
-      note: "something",
+      title: "Example 3",
+      priority: "high",
     }),
   ];
 
   let bundle2 = [
     taskFactory({
-      title: "Learn german",
+      title: "Example 4",
+      note: "something else",
+    }),
+    taskFactory({
+      title: "Example 5",
       date: "15.03.2018",
       priority: "high",
-      note: "something",
-    }),
-    taskFactory({
-      title: "Learn Math!",
-      date: "15.03.2018",
-      priority: "high",
-    }),
-    taskFactory({
-      title: "LEHRNE DEUTSCH!!!",
-      date: "15.03.2018",
-      priority: "high",
-    }),
-  ];
-
-  let bundle3 = [
-    taskFactory({
-      title: "Make stuff",
-      note: "something",
-      done: true,
-    }),
-    taskFactory({
-      title: "Do stuff",
-      date: "10.01.2020",
-      done: true,
-    }),
-    taskFactory({
-      title: "Run stuff",
-      note: "something",
       done: true,
     }),
   ];

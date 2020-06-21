@@ -13,10 +13,6 @@ function getProjects() {
       title: "Project 2",
       tasks: DefaultTasks.getTasksByNumber(2),
     }),
-    projectFactory({
-      title: "Something to consider",
-      tasks: DefaultTasks.getTasksByNumber(3),
-    }),
   ];
 
   return allProjects;

@@ -2,36 +2,36 @@ function showProjects() {
   // Make menu button in the top left corner do work (change projects to wide or narrow)
   document
     .getElementById("menu-icon")
-    .addEventListener("click", () => broadenProjectContainer());
+    .addEventListener("click", () => narrowProjectContainer());
 }
 
-function broadenProjectContainer() {
-  // Take an array of elements from the page and toggle a class 'broad' on each
-  for (let element of getElementsToBroad()) {
-    toggleBroad(element);
+function narrowProjectContainer() {
+  // Take an array of elements from the page and toggle a class 'narrow' on each
+  for (let element of getElementsToNarrow()) {
+    toggleNarrow(element);
   }
 }
 
 function minimizeProjectContainer() {
-  // Take an array of elements from the page and toggle a class 'broad' on each
-  for (let element of getElementsToBroad()) {
-    addBroad(element);
+  // Take an array of elements from the page and toggle a class 'narrow' on each
+  for (let element of getElementsToNarrow()) {
+    addNarrow(element);
   }
 }
 
-function addBroad(element) {
-  // Remove class 'broad' from an element
+function addNarrow(element) {
+  // Remove class 'narrow' from an element
   // this class changes left-side page menu making it smaller
-  element.classList.add("broad");
+  element.classList.add("narrow");
 }
 
-function toggleBroad(element) {
-  // Add/remove class 'broad' to an element
+function toggleNarrow(element) {
+  // Add/remove class 'narrow' to an element
   // this class changes left-side page menu making it smaller
-  element.classList.toggle("broad");
+  element.classList.toggle("narrow");
 }
 
-function getElementsToBroad() {
+function getElementsToNarrow() {
   // Take some DOM elements from the page
   let content = document.getElementById("content");
   let projectList = document.getElementById("project-list");
@@ -60,4 +60,4 @@ function getElementsToBroad() {
   return elements;
 }
 
-export { showProjects, minimizeProjectContainer };
+export { showProjects, minimizeProjectContainer, narrowProjectContainer };
